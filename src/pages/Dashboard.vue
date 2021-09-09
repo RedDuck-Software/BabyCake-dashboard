@@ -62,8 +62,13 @@
                         </div>
                         <div class="col-sm-9 p-2">
                           <div class="title-1">
-                            My reward: <span class="bold">{{ myBnbReward }} BNB</span>
+                            Available reward: <span class="bold">{{ cakeAvailableReward }} CAKE</span>
                           </div>
+
+                          <div class="title-1 mt-3">
+                            Total rewards: <span class="bold">{{ cakeTotalGainedReward }} CAKE</span>
+                          </div>
+
                           <div class="title-2">
                             Next claim date: <span class="bold">{{ nextClaimDate }} </span>
                           </div>
@@ -78,14 +83,14 @@
                               <button
                                 id="claim-button"
                                 type="button"
-                                :disabled="myBnbReward === '0'"
+                                :disabled="cakeAvailableReward === '0'"
                                 class="el-button button-custom-new el-button--default el-button--medium is-disabled"
                                 @click="claimMyReward()"
                               >
                                 <span><i class="fa fa-gift"></i> Claim My Reward </span>
                               </button>
                             </div>
-                            <span v-if="!isRewardClaimAvailable" class="text-warning mt-4">Claim is not available. You must to own BabyCake token to start gaining your static rewards</span>
+                            <span v-if="balanceOfAddress == 0" class="text-warning mt-4">Claim is not available. You must to own BabyCake token to start gaining your static rewards</span>
 
                           </div>
                         </div>
@@ -207,12 +212,12 @@
         <template #modal-title>
           Congratulations!
         </template>
-        <div class="d-block text-center">You just withdrawed {{ myBnbReward }}. Wanna share it on twitter?</div>
+        <div class="d-block text-center">You just withdrawed {{ cakeAvailableReward }}. Wanna share it on twitter?</div>
         <b-button class="mt-3" block>
           <ShareNetwork
             network="twitter"
             url="https://moonkat.net/"
-            :title="`I just claimed ${myBnbReward} BNB only by holding MKAT token. You can try it too!`"
+            :title="`I just claimed ${cakeAvailableReward} BNB only by holding MKAT token. You can try it too!`"
             @open="open"
           >
             Of course!
@@ -243,7 +248,8 @@ export default {
       maxMkatTx: null,
       hundredThousandMKATUSD: "...",
       isRewardClaimAvailable: false,
-      myBnbReward: "...",
+      cakeAvailableReward: "...",
+      cakeTotalGainedReward: "...",
       nextClaimDate: "...",
       myBnbRewardAfterTax: 0,
       totalBnbInPool: "...",
@@ -254,7 +260,7 @@ export default {
       amountMkat: 0,
       maxBNBTx: "...",
       provider: null,
-      
+      balanceOfAddress: 0,  
     };
   },
   computed: {
@@ -262,7 +268,7 @@ export default {
     ...mapGetters(["walletProviderType"]),
   },
   watch: {
-    myBnbReward() {},
+    cakeAvailableReward() {},
   },
   async mounted() {
     if(!this.signerAddress) { 
@@ -293,13 +299,15 @@ export default {
 
   methods: {
     async loadContractInfo() {
-      console.log("wallet provider: ", this.walletProviderType);
-      console.log("signer address: ", this.signerAddress);
+      console.debug("wallet provider: ", this.walletProviderType);
+      console.debug("signer address: ", this.signerAddress);
 
       this.contract = this.service.getTokenContractInstance();
-      console.log("contract:  ", this.contract);
+      console.debug("contract:  ", this.contract);
   
       this.provider = this.service.getWeb3Provider();
+
+      this.balanceOfAddress =  utils.formatUnits(await this.contract.balanceOf(this.signerAddress), 18);
 
       const staticRewardsInfo =  await this.contract.getAccountDividendsInfo(this.signerAddress);
 
@@ -307,14 +315,16 @@ export default {
 
       this.isRewardClaimAvailable = staticRewardsInfo[1].gt(BigNumber.from("0"));
 
-      console.log("is reward claim available for user: ", this.isRewardClaimAvailable);
+      console.debug("is reward claim available for user: ", this.isRewardClaimAvailable);
 
       if(this.isRewardClaimAvailable == true) { 
-        this.myBnbReward = utils.formatEther(staticRewardsInfo[3]); 
+        this.cakeAvailableReward = utils.formatUnits(staticRewardsInfo[3], 18); 
+        this.cakeTotalGainedReward =  utils.formatUnits(staticRewardsInfo[4], 18); 
+
         this.nextClaimDate = new Date(staticRewardsInfo[6]) / 1000; 
 
-        console.log("available reward: ", this.myBnbReward);
-        console.log("next claim date: ", this.nextClaimDate);
+        console.debug("available reward: ", this.cakeAvailableReward);
+        console.debug("next claim date: ", this.nextClaimDate);
       }
       
 
@@ -349,7 +359,7 @@ export default {
 
         this.openShareOnTwitterModal();
       } catch (ex) {
-        console.log("claimBNB exception: ", ex);
+        console.debug("claimBNB exception: ", ex);
       } finally {
         this.$loading(false);
       }
