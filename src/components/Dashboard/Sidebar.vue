@@ -6,7 +6,7 @@
           <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="moonKat" />
         </router-link>
       </div>
-      <div class="mrat-text hide-on-mobile">beaglecake</div>
+      <div class="mrat-text hide-on-mobile" style="color: #190053">beaglecake</div>
       <div class="mrat-desc">A new way to earn BNB</div>
       <div class="button-buy-mrat hide-on-mobile">
         <a
@@ -52,13 +52,40 @@
       </div>
     </div>
     <div class="address-info sidebar-menu">
-      <div v-for="(item, id) in menuItems" v-bind:key="id" class="sidebar-menu-item">
+      <div class="sidebar-menu-item sidebar-menu-item-nonlast">
         <a href="">
-          <img :src="`@/assets/images/${item.logoPath}.png`" alt="" />
-          <span>{{ item.name }}</span>
+          <img src="@/assets/images/home.png" alt="" />
+          <span>Homepage</span>
         </a>
-        <div v-if="id < menuItems.length - 1"></div>
       </div>
+      <div class="sidebar-menu-item sidebar-menu-item-nonlast">
+        <a href="">
+          <img src="@/assets/images/book.png" alt="" />
+          <span>Guide</span>
+        </a>
+      </div>
+      <div class="sidebar-menu-item sidebar-menu-item-nonlast">
+        <a href="">
+          <img src="@/assets/images/vosklznak.png" alt="" />
+          <span>Disclaimer</span>
+        </a>
+      </div>
+      <div class="sidebar-menu-item sidebar-menu-item-nonlast">
+        <a href="">
+          <img src="@/assets/images/charts.png" alt="" />
+          <span>Contract</span>
+        </a>
+      </div>
+      <div class="sidebar-menu-item">
+        <a href="">
+          <img src="@/assets/images/chartsup.png" alt="" />
+          <span>Chart</span>
+        </a>
+      </div>
+    </div>
+    <div class="sidebar-locale">
+      <img src="@/assets/images/globus.png" alt="" />
+      <span>English</span>
     </div>
     <div class="button-logout-wrapper hide-on-mobile" style="cursor: pointer" @click="logout()">
       <a target="_blank" class="button-custom-new button-sidebar"
@@ -96,33 +123,6 @@ export default {
       myMkatBalanceInBUSD: "0.00",
       mkatContract: null,
       service: null,
-      menuItems: [
-        {
-          name: "Homepage",
-          logoPath: "home",
-          href: "",
-        },
-        {
-          name: "Guide",
-          logoPath: "book",
-          href: "",
-        },
-        {
-          name: "Disclaimer",
-          logoPath: "vosklznak",
-          href: "",
-        },
-        {
-          name: "Contract",
-          logoPath: "charts",
-          href: "",
-        },
-        {
-          name: "Chart",
-          logoPath: "chartsup",
-          href: "",
-        },
-      ],
     };
   },
   computed: {
@@ -185,10 +185,35 @@ export default {
   flex-direction: column;
   align-items: start;
 }
-
 .sidebar-menu-item {
+  width: 100%;
+}
+.sidebar-menu-item a {
   display: flex;
+  color: #ffffff;
   align-items: center;
   gap: 5px;
+  padding: 5px 0;
+}
+.sidebar-menu-item img {
+  height: 20px;
+}
+.sidebar-menu-item-nonlast {
+  border-bottom: 1px solid #ffffff;
+}
+.sidebar-locale {
+  display: flex;
+  align-items: center;
+  background-color: #190053;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 25px;
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 15px;
+  gap: 5px;
+}
+.sidebar-locale img {
+  height: 20px;
 }
 </style>

@@ -59,7 +59,18 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-6"></div>
+                <div class="col-sm-6 social-links-container">
+                  <div class="social-links">
+                    <a href=""><img src="@/assets/images/Youtube_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Tiktok_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Reddit_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Facebook_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Discord_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Twitter_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Instagram_logo.png" alt=""/></a>
+                    <a href=""><img src="@/assets/images/Telegram_logo.png" alt=""/></a>
+                  </div>
+                </div>
               </div>
               <div class="mt-3">
                 <div id="myTabContent" class="tab-content info-container">
@@ -67,17 +78,17 @@
                     <div class="claim-reward-content">
                       <div class="row">
                         <div class="col-sm-3 p-1">
-                          <div class="title-1">Reward Pool</div>
+                          <div class="title-1" style="color: #190053">Reward Pool</div>
                           <div class="image-content">
                             <img src="@/assets/images/hand.png" class="image-reward-pool" />
                           </div>
-                          <div class="title-2">BNB <span class="card-panel-num"> </span></div>
+                          <div class="title-2" style="color: #190053">BNB <span class="card-panel-num"> </span></div>
                         </div>
                         <div class="col-sm-9 p-2">
-                          <div class="title-1">
+                          <div class="title-1" style="color: #190053">
                             My reward: <span class="bold">{{ myBnbReward }} BNB</span>
                           </div>
-                          <div class="title-2">
+                          <div class="title-2" style="color: #190053">
                             Next claim date: <span class="bold">{{ nextClaimDate }} </span>
                           </div>
                           <div class="title-noted">
@@ -114,8 +125,8 @@
                         <div class="row">
                           <div class="col-sm-4 p-1"><img src="@/assets/images/beaglemoney.png" class="img-icon" /></div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">Max Transaction Amount</div>
-                            <div class="text-2">
+                            <div class="text-1" style="color: #190053">Max Transaction Amount</div>
+                            <div class="text-2" style="color: #190053">
                               <span id="max-mkat-tx">{{ maxMkatTx }}</span
                               ><span class="card-panel-num"> MKAT </span><a><i class="el-icon-document-copy"></i></a
                               ><span> | </span><span class="card-panel-num"> {{ maxBNBTx }} BNB </span
@@ -130,8 +141,8 @@
                             <img src="@/assets/images/beaglepancake2.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">Total Liquidity Pool</div>
-                            <div class="text-2">
+                            <div class="text-1" style="color: #190053">Total Liquidity Pool</div>
+                            <div class="text-2" style="color: #190053">
                               <span>$</span><span class="card-panel-num"> {{ totalLiquidityPoolUSD }} </span>
                             </div>
                           </div>
@@ -143,8 +154,8 @@
                             <img src="@/assets/images/beaglepool.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">Total BNB in liquidity pool</div>
-                            <div class="text-2">
+                            <div class="text-1" style="color: #190053">Total BNB in liquidity pool</div>
+                            <div class="text-2" style="color: #190053">
                               <span> {{ totalBnbInPool }} </span><span class="card-panel-num"> BNB </span>
                             </div>
                           </div>
@@ -156,8 +167,8 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">Current 100,000 MKAT price</div>
-                            <div class="text-2">
+                            <div class="text-1" style="color: #190053">Current 100,000 MKAT price</div>
+                            <div class="text-2" style="color: #190053">
                               <span></span><span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
                           </div>
@@ -680,5 +691,18 @@ export default {
 .info-container {
   border-radius: 20px;
   background-color: #190053;
+}
+.social-links-container {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.social-links img {
+  height: 15px;
 }
 </style>

@@ -76,6 +76,7 @@ p {
 
 #dark-mode {
   background: #c4c6e7;
+  color: #190053;
   overflow-x: hidden;
   position: relative;
   height: 100%;
@@ -1617,12 +1618,10 @@ textarea::placeholder {
 .claim-reward .statistic-wrapper .item-statistic .text-1 {
   font-size: 13px;
   font-weight: 300;
-  color: #fff;
 }
 
 .claim-reward .statistic-wrapper .item-statistic .text-2 {
   margin-top: 10px;
-  color: #fff;
   font-size: 13px;
 }
 
