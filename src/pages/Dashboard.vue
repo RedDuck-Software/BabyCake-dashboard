@@ -80,6 +80,7 @@
                         <div class="col-sm-3 p-1">
                           <div class="title-1" style="color: #190053">Reward Pool</div>
                           <div class="image-content">
+                            <img src="@/assets/images/beaglepancakesx.png" alt="image-pancake" />
                             <img src="@/assets/images/hand.png" class="image-reward-pool" />
                           </div>
                           <div class="title-2" style="color: #190053">BNB <span class="card-panel-num"> </span></div>
@@ -663,6 +664,17 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: "SourceSansPro-Semibold";
+  src: local("SourceSansPro-Semibold"), url(../assets/fonts/SourceSansPro-Semibold.ttf) format("truetype");
+}
+</style>
+
+<style>
+.dashboard-content {
+  padding: 0 10px;
+}
+
 .modal-content {
   background-color: black;
   color: white !important;
@@ -700,9 +712,17 @@ export default {
 .social-links {
   display: flex;
   align-items: center;
-  gap: 7px;
+  margin: 30px 0 20px;
+  gap: 10px;
 }
 .social-links img {
-  height: 15px;
+  height: 23px;
+}
+
+.nav-item a {
+  font-family: SourceSansPro-Semibold;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 10px;
 }
 </style>

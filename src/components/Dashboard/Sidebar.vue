@@ -17,7 +17,7 @@
           <div class="buyCard">
             <div class="buyCardBody">
               <img src="@/assets/images/shop.png" alt="" />
-              <span>BUYSSMRAT</span>
+              <span class="buysSmart">BUYSSMRAT</span>
             </div>
           </div>
         </a>
@@ -93,7 +93,7 @@
         <div class="buyCard">
           <div class="buyCardBody">
             <img src="@/assets/images/logout.png" alt="" />
-            <span>LOGOUT</span>
+            <span class="logoutText">LOGOUT</span>
           </div>
         </div>
       </a>
@@ -180,6 +180,11 @@ export default {
   display: inline-block;
 }
 
+.buysSmart {
+  font-weight: 500;
+  color: #c4c6e7;
+}
+
 .sidebar-menu {
   display: flex;
   flex-direction: column;
@@ -194,6 +199,7 @@ export default {
   align-items: center;
   gap: 5px;
   padding: 5px 0;
+  padding-left: 25px;
 }
 .sidebar-menu-item img {
   height: 20px;
@@ -211,9 +217,15 @@ export default {
   color: #fff;
   border-radius: 20px;
   padding: 5px 15px;
+  padding-left: 35px;
   gap: 5px;
 }
 .sidebar-locale img {
   height: 20px;
+}
+
+.logoutText {
+  color: #c4c6e7;
+  font-weight: 500;
 }
 </style>

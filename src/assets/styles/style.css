@@ -1051,18 +1051,17 @@ textarea::placeholder {
 }
 
 .moonkat-sidebar .logo-and-buy .mrat-text {
-  font-size: 20px;
-  color: #fff;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 700;
   text-align: center;
   text-transform: uppercase;
 }
 
 .moonkat-sidebar .logo-and-buy .mrat-desc {
   font-size: 18px;
-  color: #04abea;
+  color: #00aaa6;
   text-align: center;
-  font-weight: 500;
+  font-weight: 700;
   margin-top: 5px;
 }
 
@@ -1236,14 +1235,14 @@ textarea::placeholder {
   border: 0;
   border-bottom: 2px solid transparent;
   margin-right: 0;
-  color: #fff;
+  color: #190053;
   padding: 2px 0px;
   margin-right: 21px;
 }
 
 .tab-card-header > .nav-tabs > li > a.show {
   border-bottom: 2px solid #ff7657;
-  color: #fff;
+  color: #190053;
   background: transparent;
 }
 
@@ -1314,7 +1313,6 @@ textarea::placeholder {
 .el-input {
   position: relative;
   font-size: 14px;
-  display: inline-block;
   width: 100%;
 }
 
@@ -1485,7 +1483,7 @@ textarea::placeholder {
 
 /*claim bnb css*/
 .claim-reward .claim-reward-content {
-  margin-top: 25px;
+  margin-top: 245px;
   border-radius: 20px;
   background-color: #c4c6e7;
   padding: 15px;
@@ -1519,10 +1517,13 @@ textarea::placeholder {
 }
 
 .claim-reward .claim-reward-content .image-content {
+  display: flex;
+  flex-direction: column;
   margin-top: 10px;
 }
 
 .claim-reward .claim-reward-content .p-1 .image-content img {
+  margin: 0 auto;
   width: 60px;
 }
 
@@ -1566,8 +1567,11 @@ textarea::placeholder {
 
 .claim-reward .claim-reward-content .button-wrapper .button-custom-new {
   width: 200px;
-  color: #fff;
-  font-size: 14px !important;
+  height: 44px;
+  color: #c4c6e7;
+  font-weight: 500;
+  border: none;
+  font-size: 15px !important;
 }
 
 .button-custom-new:disabled {

@@ -1,32 +1,33 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    node: true,
   },
-  extends: [
-    'eslint:recommended',
-    'plugin:vue/recommended',
-    '@vue/typescript',
-    '@vue/prettier',
-  ],
+  extends: ["eslint:recommended", "plugin:vue/recommended", "@vue/typescript", "@vue/prettier"],
   rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
 
-      "comma-dangle": [
-        "error",
-        {
-          arrays: "always-multiline",
-          objects: "always-multiline",
-          imports: "always-multiline",
-          exports: "always-multiline",
-          functions: "never",
-        },
-      ],
-      "no-unused-vars": ["off"],
-    "vue/require-prop-types":["off"]
+    "comma-dangle": [
+      "error",
+      {
+        arrays: "always-multiline",
+        objects: "always-multiline",
+        imports: "always-multiline",
+        exports: "always-multiline",
+        functions: "never",
+      },
+    ],
+    "no-unused-vars": ["off"],
+    "vue/require-prop-types": ["off"],
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
   parserOptions: {
-    parser: '@typescript-eslint/parser'
-  }
-}
+    parser: "@typescript-eslint/parser",
+  },
+};
