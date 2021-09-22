@@ -20,12 +20,7 @@ module.exports = {
     ],
     "no-unused-vars": ["off"],
     "vue/require-prop-types": ["off"],
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
+    "prettier/prettier": 0,
   },
   parserOptions: {
     parser: "@typescript-eslint/parser",

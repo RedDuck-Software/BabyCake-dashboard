@@ -36,13 +36,13 @@
         <span id="copy-address" @click="copyAddress()">
           <span style="margin-right: 3px"> <i class="fa fa-clone"></i></span> Copy address
         </span>
-        <a id="bscscan" :href="`https://bscscan.com/address/${signerAddress}`" target="_blank" style="margin-left: 10px"
-          ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on BscScan Explorer
+        <a id="bscscan" :href="`https://etherscan.io/address/${signerAddress}`" target="_blank" style="margin-left: 10px"
+          ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on Etherscan
         </a>
       </div>
       <div class="text-2">Your MKAT balance:</div>
       <div class="text-3">
-        MKAT
+        BBC
         <span> {{ myMkatBalance }} </span><br />
         (
         <span>
@@ -131,28 +131,25 @@ export default {
   },
   watch: {
     contract() {
-      this.loadContractInfo();
+      this.updateUserBalances();
     },
   },
-  mounted() {
+  async mounted() {
     this.canCopy = !!navigator.clipboard;
-    this.loadContractInfo();
 
-    setTimeout(async function() {
-      await this.loadContractInfo();
-    }, 600000);
+    this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
+    await this.service.initialize();
+
+    this.mkatContract = this.service.getTokenContractInstance();
+
+    this.updateUserBalances();
+
+    setTimeout(this.updateUserBalance, 600000);
   },
   methods: {
-    async loadContractInfo() {
-      console.log(this.walletProviderType);
-
-      const service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
-      await service.updateMKATBusdValue();
-
-      this.service = service;
-      this.mkatContract = await service.getContractInstance(CONTRACT_ADDRESS);
-      this.myMkatBalance = ethers.utils.formatUnits(await this.mkatContract.balanceOf(this.signerAddress), 9);
-      this.myMkatBalanceInBUSD = await service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 9));
+    async updateUserBalances() {
+      this.myMkatBalance = ethers.utils.formatUnits(await this.mkatContract.balanceOf(this.signerAddress), 18);
+      this.myMkatBalanceInBUSD = ethers.utils.formatUnits(await this.service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 18)), 18);
     },
     async copyAddress() {
       const address = this.$refs.myAddr;
