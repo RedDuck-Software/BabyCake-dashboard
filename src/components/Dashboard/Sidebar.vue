@@ -106,7 +106,6 @@ import { CONTRACT_ADDRESS } from "@/constants";
 import { ContractFactory, ethers } from "ethers";
 import { mapGetters } from "vuex";
 import MetamaskService from "@/MetamaskService";
-import { ethers } from "ethers";
 import { WalletType } from "../../MetamaskService";
 
 export default {

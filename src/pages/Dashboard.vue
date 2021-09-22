@@ -251,7 +251,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { utils } from "ethers";
+import { utils, ethers, BigNumber} from "ethers";
 
 import { CONTRACT_ADDRESS } from "@/constants";
 import MetamaskService from "@/MetamaskService";
@@ -443,6 +443,7 @@ export default {
 }
 .social-links img {
   height: 23px;
+}
 .claim-reward-content { 
   position: relative;
 }
