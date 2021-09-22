@@ -6,8 +6,8 @@
           <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="moonKat" />
         </router-link>
       </div>
-      <div class="mrat-text hide-on-mobile" style="color: #190053">beaglecake</div>
-      <div class="mrat-desc">A new way to earn BNB</div>
+      <div class="mrat-text hide-on-mobile" style="color: #190053">babycake</div>
+      <div class="mrat-desc">A new way to earn CAKE</div>
       <div class="button-buy-mrat hide-on-mobile">
         <a
           href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x38bd8cd90374dbc903aed9d2ee28f5ab856342ce"
@@ -17,7 +17,7 @@
           <div class="buyCard">
             <div class="buyCardBody">
               <img src="@/assets/images/shop.png" alt="" />
-              <span class="buysSmart">BUYSSMRAT</span>
+              <span class="buyCake">BUY CAKE</span>
             </div>
           </div>
         </a>
@@ -40,7 +40,7 @@
           id="bscscan"
           :href="`https://etherscan.io/address/${signerAddress}`"
           target="_blank"
-          style="margin-left: 10px;"
+          style="margin-left: 10px"
           ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on Etherscan
         </a>
       </div>
@@ -179,13 +179,17 @@ export default {
   align-items: center;
   gap: 5px;
 }
+.buyCardBody img {
+  padding-top: 2px;
+}
 
 .buyCard {
   display: inline-block;
 }
 
-.buysSmart {
+.buyCake {
   font-weight: 500;
+  padding-top: 6px;
   color: #c4c6e7;
 }
 
@@ -193,17 +197,41 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: start;
+  padding: 10px 0 10px;
 }
 .sidebar-menu-item {
   width: 100%;
 }
+.sidebar-menu-item:hover {
+  background-color: #200069;
+  transition: color 0.3s linear;
+}
+.sidebar-menu-item:nth-child(1) {
+  margin-top: -10px;
+}
+.sidebar-menu-item:hover:nth-child(1) {
+  border-radius: 20px 20px 0px 0px;
+}
+.sidebar-menu-item:nth-last-child(1) {
+  margin-bottom: -10px;
+}
+.sidebar-menu-item:hover:nth-last-child(1) {
+  border-radius: 0px 0px 20px 20px;
+}
 .sidebar-menu-item a {
   display: flex;
-  color: #ffffff;
+  color: #c4c6e7;
   align-items: center;
-  gap: 5px;
-  padding: 5px 0;
-  padding-left: 25px;
+  gap: 10px;
+  padding: 10px 0;
+  padding-left: 40px;
+}
+.sidebar-menu-item a span {
+  font-weight: 500;
+}
+.sidebar-menu-item:hover a span {
+  transition: color 0.3 linear;
+  color: #e6e7ff;
 }
 .sidebar-menu-item img {
   height: 20px;
@@ -217,12 +245,24 @@ export default {
   background-color: #190053;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 25px;
-  color: #fff;
+  margin: 25px 0px;
+  color: #c4c6e7;
   border-radius: 20px;
-  padding: 5px 15px;
-  padding-left: 35px;
-  gap: 5px;
+  padding: 12px 15px;
+  padding-left: 40px;
+  gap: 10px;
+}
+.sidebar-locale:hover {
+  background-color: #200069;
+  transition: color 0.3s linear;
+}
+.sidebar-locale span {
+  font-weight: 500;
+  cursor: pointer;
+}
+.sidebar-locale:hover span {
+  transition: color 0.1s linear;
+  color: #e6e7ff;
 }
 .sidebar-locale img {
   height: 20px;
@@ -231,6 +271,7 @@ export default {
 .logoutText {
   color: #c4c6e7;
   font-weight: 500;
+  padding-top: 4px;
 }
 
 a#bscscan {

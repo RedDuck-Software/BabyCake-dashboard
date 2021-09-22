@@ -123,14 +123,29 @@
                                 </div>
                               </button>
                             </div>
-                            <span v-if="balanceOfAddress == 0" class="text-warning mt-4">Claim is not available. You must to own BabyCake token to start gaining your static rewards</span>
-
+                            <span v-if="balanceOfAddress == 0" class="text-warning mt-4"
+                              >*Claim is not available. You must to own BabyCake token to start gaining your static
+                              rewards</span
+                            >
                           </div>
                         </div>
                       </div>
-                      
                     </div>
                     <div class="statistic-wrapper">
+                      <div class="item-statistic">
+                        <div class="row">
+                          <div class="col-sm-4 p-1"><img src="@/assets/images/beaglemoney.png" class="img-icon" /></div>
+                          <div class="col-sm-8 p-2">
+                            <div class="text-1" style="color: #190053">Max Transaction Amount</div>
+                            <div class="text-2" style="color: #190053">
+                              <span id="max-mkat-tx">{{ maxMkatTx }}</span
+                              ><span class="card-panel-num"> MKAT </span><a><i class="el-icon-document-copy"></i></a
+                              ><span> | </span><span class="card-panel-num"> {{ maxBNBTx }} BNB </span
+                              ><a><i class="el-icon-document-copy"></i></a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                       <div class="item-statistic">
                         <div class="row">
                           <div class="col-sm-4 p-1">
@@ -157,13 +172,13 @@
                           </div>
                         </div>
                       </div>
-                      <div class="item-statistic w-100">
+                      <div class="item-statistic">
                         <div class="row">
                           <div class="col-sm-4 p-1">
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1" style="color: #190053">Current 100,000 MKAT price</div>
+                            <div class="text-1" style="color: #190053">Current 100,000 CAKE price</div>
                             <div class="text-2" style="color: #190053">
                               <span></span><span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
@@ -357,7 +372,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { utils, ethers, BigNumber} from "ethers";
+import { utils, ethers, BigNumber } from "ethers";
 
 import { CONTRACT_ADDRESS } from "@/constants";
 import MetamaskService from "@/MetamaskService";
@@ -369,7 +384,7 @@ export default {
   components: { Statistic, Sidebar },
   data() {
     return {
-      service : null, 
+      service: null,
       contract: null,
       activeItem: "one",
       maxMkatTx: null,
@@ -387,7 +402,7 @@ export default {
       amountMkat: 0,
       maxBNBTx: "...",
       provider: null,
-      balanceOfAddress: 0,  
+      balanceOfAddress: 0,
     };
   },
   computed: {
@@ -398,7 +413,7 @@ export default {
     cakeAvailableReward() {},
   },
   async mounted() {
-    if(!this.signerAddress) { 
+    if (!this.signerAddress) {
       console.error("user`s wallet is not connected");
       this.$router.replace({ path: "connect-wallet" });
       return;
@@ -412,14 +427,13 @@ export default {
       await this.loadContractInfo();
 
       const that = this;
-      setInterval(function() { that.loadContractInfo() } , 10000);
-    }catch(ex) { 
+      setInterval(function() {
+        that.loadContractInfo();
+      }, 10000);
+    } catch (ex) {
       console.error(ex);
-      alert(
-        "An error occured. Error msg: " + ex +
-        "Must be: BSC Mainnet"
-      );  
-    }finally {
+      alert("An error occured. Error msg: " + ex + "Must be: BSC Mainnet");
+    } finally {
       this.$loading(false);
     }
   },
@@ -431,12 +445,12 @@ export default {
 
       this.contract = this.service.getTokenContractInstance();
       console.debug("contract:  ", this.contract);
-  
+
       this.provider = this.service.getWeb3Provider();
 
-      this.balanceOfAddress =  utils.formatUnits(await this.contract.balanceOf(this.signerAddress), 18);
+      this.balanceOfAddress = utils.formatUnits(await this.contract.balanceOf(this.signerAddress), 18);
 
-      const staticRewardsInfo =  await this.contract.getAccountDividendsInfo(this.signerAddress);
+      const staticRewardsInfo = await this.contract.getAccountDividendsInfo(this.signerAddress);
 
       console.debug("static rewards : ", staticRewardsInfo);
 
@@ -444,22 +458,23 @@ export default {
 
       console.debug("is reward claim available for user: ", this.isRewardClaimAvailable);
 
-      if(this.isRewardClaimAvailable == true) { 
-        this.cakeAvailableReward = utils.formatUnits(staticRewardsInfo[3], 18); 
-        this.cakeTotalGainedReward =  utils.formatUnits(staticRewardsInfo[4], 18); 
+      if (this.isRewardClaimAvailable == true) {
+        this.cakeAvailableReward = utils.formatUnits(staticRewardsInfo[3], 18);
+        this.cakeTotalGainedReward = utils.formatUnits(staticRewardsInfo[4], 18);
 
-        this.nextClaimDate = new Date(staticRewardsInfo[6]) / 1000; 
+        this.nextClaimDate = new Date(staticRewardsInfo[6]) / 1000;
 
         console.debug("available reward: ", this.cakeAvailableReward);
         console.debug("next claim date: ", this.nextClaimDate);
       }
-      
 
       const hundredThousandMKAT = utils.parseUnits("100000", 18);
       const usdPrice = await this.service.getMkatValueInBUSD(hundredThousandMKAT);
 
       this.hundredThousandMKATUSD = parseFloat(utils.formatUnits(usdPrice, 18)).toFixed(2);
-      this.totalLiquidityPoolUSD = parseFloat(utils.formatEther(await this.service.totalLiquidityPoolInBUSD())).toFixed(2);
+      this.totalLiquidityPoolUSD = parseFloat(utils.formatEther(await this.service.totalLiquidityPoolInBUSD())).toFixed(
+        2
+      );
 
       const totalBnbInLiquidityPool = (await this.service.getPancakePairPoolReserves())[1];
       this.totalBnbInPool = parseFloat(utils.formatEther(totalBnbInLiquidityPool)).toFixed(2);
@@ -526,7 +541,7 @@ export default {
         this.$loading(true);
         const txResponse = await this.contract.claim();
         const resp = await txResponse.wait();
-        console.debug({txResponse: resp});
+        console.debug({ txResponse: resp });
 
         this.openShareOnTwitterModal();
       } catch (ex) {
@@ -589,19 +604,19 @@ export default {
   display: flex;
   align-items: center;
   margin: 30px 0 20px;
-  gap: 10px;
+  gap: 15px;
 }
 .social-links img {
   height: 23px;
 }
-.claim-reward-content { 
+.claim-reward-content {
   position: relative;
 }
 
-.claim-reward-content .disabled-overlay { 
-  position: absolute;
-  background: rgba(46, 46, 46, 0.212);
-  z-index: 1000000000;
+.text-warning {
+  position: relative;
+  top: 15px;
+  color: #ff3907 !important;
 }
 
 .nav-item a {
