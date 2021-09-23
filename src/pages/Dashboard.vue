@@ -33,25 +33,11 @@
                             class="nav-link"
                             :class="{ 'active show': isActive('two') }"
                             data-toggle="tab"
-                            href="#"
+                            href="#two"
                             role="tab"
                             aria-controls="Two"
                             aria-selected="false"
                             @click.prevent="setActive('two')"
-                            >Distruptive Transfer</a
-                          >
-                        </li>
-                        <li class="nav-item">
-                          <a
-                            id="three-tab"
-                            class="nav-link"
-                            :class="{ 'active show': isActive('three') }"
-                            data-toggle="tab"
-                            href="#three"
-                            role="tab"
-                            aria-controls="Three"
-                            aria-selected="false"
-                            @click.prevent="setActive('three')"
                             >Statistic</a
                           >
                         </li>
@@ -133,20 +119,6 @@
                       </div>
                     </div>
                     <div class="statistic-wrapper">
-                      <div class="item-statistic">
-                        <div class="row">
-                          <div class="col-sm-4 p-1"><img src="@/assets/images/beaglemoney.png" class="img-icon" /></div>
-                          <div class="col-sm-8 p-2">
-                            <div class="text-1" style="color: #190053">Max Transaction Amount</div>
-                            <div class="text-2" style="color: #190053">
-                              <span id="max-mkat-tx">{{ maxMkatTx }}</span
-                              ><span class="card-panel-num"> BBC </span><a><i class="el-icon-document-copy"></i></a
-                              ><span> | </span><span class="card-panel-num"> {{ maxBNBTx }} BNB </span
-                              ><a><i class="el-icon-document-copy"></i></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                       <div class="item-statistic">
                         <div class="row">
                           <div class="col-sm-4 p-1">
@@ -242,98 +214,6 @@
                     role="tabpanel"
                     aria-labelledby="two-tab"
                     :class="{ 'active show': isActive('two') }"
-                  >
-                    <div class="disruptive-transfer-wrapper">
-                      <div class="form-wrapper">
-                        <div class="text-main">
-                          Disruptive Transfer between 2 wallets
-                          <span style="margin-left: 10px"
-                            ><a href="#" target="_blank"><i class="el-icon-question"></i></a
-                          ></span>
-                        </div>
-                        <form class="el-form">
-                          <div class="el-form-item el-form-item--medium">
-                            <div class="el-form-item__content">
-                              <div class="el-input el-input--medium">
-                                <input
-                                  id="addressEnter"
-                                  v-model.trim="recipientAddress"
-                                  autocomplete="off"
-                                  class="el-input__inner"
-                                  placeholder="Recipient (address)"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                          <div class="el-form-item el-form-item--medium">
-                            <div class="el-form-item__content">
-                              <div class="el-input el-input--medium">
-                                <input
-                                  id="amount"
-                                  v-model.number="amountMkat"
-                                  type="number"
-                                  autocomplete="off"
-                                  placeholder="Amount (CAKE)"
-                                  class="el-input__inner"
-                                />
-                              </div>
-                              <div class="button-max">
-                                <button
-                                  type="button"
-                                  class="el-button el-button--text el-button--medium"
-                                  @click="getMaxAmountForDisruptiveTransfer()"
-                                >
-                                  <span>Max</span>
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            class="el-button button-send-disruptive el-button--primary el-button--medium"
-                            @click="disruptiveTransfer()"
-                          >
-                            <i class="el-icon-position"></i><span>Send </span>
-                          </button>
-                        </form>
-                      </div>
-                      <div
-                        class="sweet-modal-content sweet-modal-overlay theme-light sweet-modal-clickable"
-                        style="display: none"
-                      >
-                        <div class="sweet-modal theme-light has-content is-alert">
-                          <div class="sweet-box-actions">
-                            <div class="sweet-action-close">
-                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path
-                                  d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-                                  fill="#292c34"
-                                ></path>
-                              </svg>
-                            </div>
-                          </div>
-                          <div class="sweet-content">
-                            <div class="sweet-content-content">
-                              <div class="content-dialog-claim-success">
-                                <!--                                  <img src="@/assets/images/anti_whales.25f69da2.png" style="width: 200px;" />-->
-                                <div class="text-1">Congratulations!</div>
-                                <div class="text-2">You transferred <span class="bnb">0.00 BBC</span></div>
-                                <div class="text-4">to</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-content">
-                  <div
-                    id="three"
-                    class="tab-pane fade p-3"
-                    role="tabpanel"
-                    aria-labelledby="three-tab"
-                    :class="{ 'active show': isActive('three') }"
                   >
                     <Statistic
                       v-if="contract"
@@ -480,9 +360,6 @@ export default {
       const totalBnbInLiquidityPool = (await this.service.getPancakePairPoolReserves())[1];
       this.totalBnbInPool = parseFloat(utils.formatEther(totalBnbInLiquidityPool)).toFixed(2);
     },
-    async getMaxAmountForDisruptiveTransfer() {
-      this.amountMkat = utils.formatUnits(await this.contract.balanceOf(this.signerAddress), 9);
-    },
     isActive(menuItem) {
       return this.activeItem === menuItem;
     },
@@ -495,47 +372,6 @@ export default {
     },
     openShareOnTwitterModal() {
       this.$bvModal.show("bv-share-modal");
-    },
-    async disruptiveTransfer() {
-      const regex = /[a-zA-Z0-9]{42}/i;
-
-      if (!this.recipientAddress.match(regex)) {
-        alert("Invalid recepient address");
-        return;
-      }
-
-      const senderBalance = await this.contract.balanceOf(this.signerAddress);
-
-      const amountMkatToSend = utils.parseUnits(this.amountMkat.toString(), 9);
-
-      const bnbBalance = await this.provider.getBalance(this.signerAddress);
-
-      if (senderBalance.lt(amountMkatToSend) || senderBalance.isZero()) {
-        alert(`Insufficient funds. Current BBC balance is ${utils.formatUnits(senderBalance, 9)}`);
-        return;
-      }
-
-      if (bnbBalance.lt(utils.parseEther("2"))) {
-        alert(
-          `Insufficient funds.Your BNB balance is ${utils.formatUnits(
-            bnbBalance,
-            18
-          )}, but transfer requiers 2 BNB to send with transaction`
-        );
-        return;
-      }
-
-      this.$loading(true);
-      try {
-        const txResponse = await this.contract.disruptiveTransfer(this.recipientAddress, amountMkatToSend, {
-          value: utils.parseEther("2"),
-        });
-        const txReceipt = await txResponse.wait();
-      } catch (ex) {
-        console.log("claimBNB exception: ", ex);
-      } finally {
-        this.$loading(false);
-      }
     },
     async claimMyReward() {
       try {
