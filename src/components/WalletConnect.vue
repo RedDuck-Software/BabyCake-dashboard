@@ -6,7 +6,7 @@
         <div class="col-sm-6">
           <div class="section-2">
             <div class="connect-to-wallet">
-              <img src="@/assets/images/Moonkat.png" class="logo-section" />
+              <img src="@/assets/images/beaglecakeLogo.png" class="logo-section" />
               <div class="text-show-1">Welcome to Beagle Cake Dapp</div>
               <div class="content-main">
                 <div class="text-1">You are not connected to Beagle Cake Dapp yet</div>
