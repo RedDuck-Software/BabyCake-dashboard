@@ -13,7 +13,6 @@ const routes: RouteConfig[] = [
     component: Home,
     name: "Home",
   },
-
   { path: "/connect-wallet", component: ConnectWalletPage, meta: { hideNavigation: true } },
   { path: "/dashboard", component: Dashboard, meta: { hideNavigation: true } },
 ];

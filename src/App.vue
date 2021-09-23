@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Header v-if="!$route.meta.hideNavigation" />
+   <!-- <Header v-if="!$route.meta.hideNavigation" /> -->
     <router-view></router-view>
     <!--    <Preloader />-->
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
+//import Header from "./components/Header";
 
 export default {
   name: "App",
   components: {
-    Header,
+    //Header,
   },
 };
 </script>
