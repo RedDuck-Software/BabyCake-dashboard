@@ -1,4 +1,5 @@
-export const CONTRACT_ADDRESS = "0x7F361Cc744216ae5957451917b048C4859801028";
+export const CONTRACT_ADDRESS = "0xdB8D30b74bf098aF214e862C90E647bbB1fcC58c";
+export const CLAIMER_CONTRACT_ADDRESS = "0xc990ff5175bde3c12b160787ac8a6570ba144b85";
 export const BURN_ADDRESS = "0x000000000000000000000000000000000000dEaD";
 
 export const pancackePairContractAbi = [
@@ -195,6 +196,13 @@ export const babyCakeContractAbi = [
     type: "function",
   },
   {
+    inputs: [{ internalType: "address", name: "", type: "address" }],
+    name: "_isBlacklisted",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "_marketingWalletAddress",
     outputs: [{ internalType: "address", name: "", type: "address" }],
@@ -233,6 +241,16 @@ export const babyCakeContractAbi = [
     name: "balanceOf",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      { internalType: "address", name: "account", type: "address" },
+      { internalType: "bool", name: "value", type: "bool" },
+    ],
+    name: "blacklistAddress",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   { inputs: [], name: "claim", outputs: [], stateMutability: "nonpayable", type: "function" },
