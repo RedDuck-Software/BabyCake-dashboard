@@ -84,7 +84,7 @@
                             <img src="@/assets/images/beaglepancakesx.png" alt="image-pancake" />
                             <img src="@/assets/images/hand.png" class="image-reward-pool" />
                           </div>
-                          <div class="title-2" style="color: #190053">BNB <span class="card-panel-num"> </span></div>
+                          <div class="title-2" style="color: #190053">CAKE <span class="card-panel-num"> </span></div>
                         </div>
                         <div class="col-sm-9 p-2">
                           <div class="title-1">
@@ -95,7 +95,8 @@
                             Total rewards: <span class="bold">{{ cakeTotalGainedReward }} CAKE</span>
                           </div>
 
-                          <div class="title-2">
+
+                          <div v-if="nextClaimDate != '0'" class="title-2">
                             Next claim date: <span class="bold">{{ nextClaimDate }} </span>
                           </div>
                           <div class="title-noted">
@@ -139,7 +140,7 @@
                             <div class="text-1" style="color: #190053">Max Transaction Amount</div>
                             <div class="text-2" style="color: #190053">
                               <span id="max-mkat-tx">{{ maxMkatTx }}</span
-                              ><span class="card-panel-num"> MKAT </span><a><i class="el-icon-document-copy"></i></a
+                              ><span class="card-panel-num"> BBC </span><a><i class="el-icon-document-copy"></i></a
                               ><span> | </span><span class="card-panel-num"> {{ maxBNBTx }} BNB </span
                               ><a><i class="el-icon-document-copy"></i></a>
                             </div>
@@ -316,7 +317,7 @@
                               <div class="content-dialog-claim-success">
                                 <!--                                  <img src="@/assets/images/anti_whales.25f69da2.png" style="width: 200px;" />-->
                                 <div class="text-1">Congratulations!</div>
-                                <div class="text-2">You transferred <span class="bnb">0.00 MKAT</span></div>
+                                <div class="text-2">You transferred <span class="bnb">0.00 BBC</span></div>
                                 <div class="text-4">to</div>
                               </div>
                             </div>
@@ -359,7 +360,7 @@
           <ShareNetwork
             network="twitter"
             url="https://moonkat.net/"
-            :title="`I just claimed ${cakeAvailableReward} BNB only by holding MKAT token. You can try it too!`"
+            :title="`I just claimed ${cakeAvailableReward} CAKE only by holding BBC token. You can try it too!`"
             @open="open"
           >
             Of course!
@@ -390,9 +391,9 @@ export default {
       maxMkatTx: null,
       hundredThousandMKATUSD: "...",
       isRewardClaimAvailable: false,
-      cakeAvailableReward: "...",
-      cakeTotalGainedReward: "...",
-      nextClaimDate: "...",
+      cakeAvailableReward: "0",
+      cakeTotalGainedReward: "0",
+      nextClaimDate: "0",
       myBnbRewardAfterTax: 0,
       totalBnbInPool: "...",
       estimatedGas: {},
@@ -510,7 +511,7 @@ export default {
       const bnbBalance = await this.provider.getBalance(this.signerAddress);
 
       if (senderBalance.lt(amountMkatToSend) || senderBalance.isZero()) {
-        alert(`Insufficient funds. Current MKAT balance is ${utils.formatUnits(senderBalance, 9)}`);
+        alert(`Insufficient funds. Current BBC balance is ${utils.formatUnits(senderBalance, 9)}`);
         return;
       }
 

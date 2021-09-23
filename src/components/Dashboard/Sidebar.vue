@@ -44,7 +44,7 @@
           ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on Etherscan
         </a>
       </div>
-      <div class="text-2">Your MKAT balance:</div>
+      <div class="text-2">Your Baby Cake balance:</div>
       <div class="text-3">
         BBC
         <span> {{ myMkatBalance }} </span><br />
@@ -153,10 +153,10 @@ export default {
   methods: {
     async updateUserBalances() {
       this.myMkatBalance = ethers.utils.formatUnits(await this.mkatContract.balanceOf(this.signerAddress), 18);
-      this.myMkatBalanceInBUSD = ethers.utils.formatUnits(
+      this.myMkatBalanceInBUSD = parseFloat(ethers.utils.formatUnits(
         await this.service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 18)),
         18
-      );
+      )).toFixed(2);
     },
     async copyAddress() {
       const address = this.$refs.myAddr;
