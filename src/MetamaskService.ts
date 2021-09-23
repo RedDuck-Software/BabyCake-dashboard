@@ -17,8 +17,8 @@ export enum WalletType {
   WalletConnect,
 }
 
-const WBNB_ADDRESS = "0xae13d989dac2f0debff460ac112a837c89baa7cd";// mainnet: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
-const BUSD_ADDRESS = "0x78867BbEeF44f2326bF8DDd1941a4439382EF2A7";// mainnet: "0x55d398326f99059ff775485246999027b3197955";
+const WBNB_ADDRESS = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";// mainnet: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+const BUSD_ADDRESS = "0x55d398326f99059ff775485246999027b3197955";// mainnet: "0x55d398326f99059ff775485246999027b3197955";
 
 export default class MetamaskService {
   contract?: Contract;
