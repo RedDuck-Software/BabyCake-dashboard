@@ -1438,16 +1438,6 @@ textarea::placeholder {
   background-color: transparent;
   padding: 15px 27px;
 }
-.statistic-all .statistic-p1 .text-1 {
-  font-size: 13px;
-  font-weight: 300;
-  color: #fff;
-}
-.statistic-all .statistic-p1 .text-2[data-v-bc253eca] {
-  font-size: 14px;
-  font-weight: 400;
-  margin-top: 8px;
-}
 .statistic-all .mt-25 {
   margin-top: 25px;
 }
@@ -1758,6 +1748,13 @@ textarea::placeholder {
 .statistic-all .statistic-p1 .text-1 {
   font-size: 15px;
   font-weight: 500;
+  color: #190053;
+}
+.statistic-all .statistic-p1 .text-2[data-v-6048b2f5] {
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 8px;
+  color: #190053;
 }
 
 .moonkat-sidebar .address-info .text-3 {
