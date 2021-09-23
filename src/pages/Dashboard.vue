@@ -433,7 +433,7 @@ export default {
       }, 10000);
     } catch (ex) {
       console.error(ex);
-      alert("An error occured. Error msg: " + ex + "Must be: BSC Mainnet");
+      alert("An error occured. Error msg: " + ex + "Must be: BSC Testnet");
     } finally {
       this.$loading(false);
     }
