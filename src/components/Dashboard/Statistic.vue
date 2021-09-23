@@ -20,7 +20,7 @@
             <a
               :href="`https://bscscan.com/address/${mkatAddress}`"
               target="_blank"
-              style="color: rgb(4, 171, 234); font-size: 12px; word-break: break-all"
+              style="color: rgb(4, 131, 174); font-size: 15px; word-break: break-all"
             >
               view on bscscan.com...
             </a>
@@ -120,7 +120,7 @@ export default {
   methods: {
     async loadContractInfo() {
       console.log("statistics loading");
-      
+
       const service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
       await service.initialize();
 

@@ -36,7 +36,11 @@
         <span id="copy-address" @click="copyAddress()">
           <span style="margin-right: 3px"> <i class="fa fa-clone"></i></span> Copy address
         </span>
-        <a id="bscscan" :href="`https://etherscan.io/address/${signerAddress}`" target="_blank" style="margin-left: 10px"
+        <a
+          id="bscscan"
+          :href="`https://etherscan.io/address/${signerAddress}`"
+          target="_blank"
+          style="margin-left: 10px;"
           ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on Etherscan
         </a>
       </div>
@@ -149,7 +153,10 @@ export default {
   methods: {
     async updateUserBalances() {
       this.myMkatBalance = ethers.utils.formatUnits(await this.mkatContract.balanceOf(this.signerAddress), 18);
-      this.myMkatBalanceInBUSD = ethers.utils.formatUnits(await this.service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 18)), 18);
+      this.myMkatBalanceInBUSD = ethers.utils.formatUnits(
+        await this.service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 18)),
+        18
+      );
     },
     async copyAddress() {
       const address = this.$refs.myAddr;
@@ -224,5 +231,12 @@ export default {
 .logoutText {
   color: #c4c6e7;
   font-weight: 500;
+}
+
+a#bscscan {
+  color: #c4c6e7;
+}
+a#bscscan:hover {
+  color: #fff;
 }
 </style>
