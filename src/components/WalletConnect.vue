@@ -7,9 +7,9 @@
           <div class="section-2">
             <div class="connect-to-wallet">
               <img src="@/assets/images/Moonkat.png" class="logo-section" />
-              <div class="text-show-1">Welcome to MoonKat Dapp</div>
+              <div class="text-show-1">Welcome to Beagle Cake Dapp</div>
               <div class="content-main">
-                <div class="text-1">You are not connected to MoonKat Dapp yet</div>
+                <div class="text-1">You are not connected to Beagle Cake Dapp yet</div>
                 <div class="line-2">
                   To use the Dapp, make sure: <br /><span
                     >You are using the <span class="text-color">Binance Smart Chain</span> network</span
