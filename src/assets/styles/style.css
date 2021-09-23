@@ -1313,15 +1313,10 @@ textarea::placeholder {
   display: inline-block;
   width: 100%;
 }
-.disruptive-transfer-wrapper .el-input__inner {
-  background-color: transparent;
-  color: #fff;
-  border: none;
-  border: 1px solid;
-}
 .el-input--medium .el-input__inner {
   height: 36px;
   line-height: 36px;
+  color: black;
 }
 .el-input__inner {
   border-radius: 10px !important;
