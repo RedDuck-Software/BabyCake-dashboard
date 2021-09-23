@@ -45,8 +45,8 @@
           <div class="text-2">{{ currentCircularingBalance }} BBC</div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
-          <div class="text-1">Contract BNB reward pool</div>
-          <div class="text-2">{{ contractBNBRewardPool }} BNB</div>
+          <div class="text-1">Contract CAKE reward pool</div>
+          <div class="text-2">{{ contractBNBRewardPool }} CAKE</div>
         </div>
       </div>
     </div>
@@ -134,8 +134,8 @@ export default {
         utils.formatUnits(await this.getCurrentCircularingBalance(), 9)
       ).toFixed(2);
 
-      this.contractBNBRewardPool = await utils.formatEther(await this.provider.getBalance(CONTRACT_ADDRESS));
-      this.contractBNBRewardPool = parseFloat(this.contractBNBRewardPool).toFixed(2);
+      const cakeTokenContract = await service.getCakeTokenContractInstance(CONTRACT_ADDRESS);
+      this.contractBNBRewardPool =  parseFloat(utils.formatUnits(await cakeTokenContract.balanceOf(CONTRACT_ADDRESS), 18)).toFixed(2);
     },
     async calculateMarketCap(service) {
       const circularingBalance = await this.getCurrentCircularingBalance();

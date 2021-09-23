@@ -33,7 +33,7 @@ export default class MetamaskService {
 
   public async initialize() { 
     this.oneMkatBnb = await this.getOneMkatPrice();
-    this.contract = await this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
+    this.contract = this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
   }
 
   public getWeb3Provider() { 
@@ -61,11 +61,20 @@ export default class MetamaskService {
     return this.contract;
   }
 
-  private async getBabyCakeContractInstance(contractAddress: string) {
+  private getBabyCakeContractInstance(contractAddress: string) {
     const provider = this.web3Provider;
 
     const signer = provider.getSigner();
+    
     return new ethers.Contract(contractAddress, babyCakeContractAbi, signer);
+  }
+
+  private async getCakeTokenContractInstance(babyTokenAddress: string) {
+    const provider = this.web3Provider;
+    const signer = provider.getSigner();
+    const babyCakeContract = this.getBabyCakeContractInstance(babyTokenAddress);
+    
+    return new ethers.Contract(await babyCakeContract.CAKE(), babyCakeContractAbi, signer);
   }
 
   public async getPancakeRouterContractInstance(pancakeContractAddress: string) {
@@ -162,7 +171,7 @@ export default class MetamaskService {
 
   public async getPancakeRouterAddress() {
     if (!this.contract) {
-      this.contract = await this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
+      this.contract = this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
     }
 
     return await this.contract.uniswapV2Router();
