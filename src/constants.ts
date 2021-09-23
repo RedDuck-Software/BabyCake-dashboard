@@ -196,13 +196,6 @@ export const babyCakeContractAbi = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "", type: "address" }],
-    name: "_isBlacklisted",
-    outputs: [{ internalType: "bool", name: "", type: "bool" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
     inputs: [],
     name: "_marketingWalletAddress",
     outputs: [{ internalType: "address", name: "", type: "address" }],
@@ -241,16 +234,6 @@ export const babyCakeContractAbi = [
     name: "balanceOf",
     outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
     stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "address", name: "account", type: "address" },
-      { internalType: "bool", name: "value", type: "bool" },
-    ],
-    name: "blacklistAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
     type: "function",
   },
   { inputs: [], name: "claim", outputs: [], stateMutability: "nonpayable", type: "function" },
