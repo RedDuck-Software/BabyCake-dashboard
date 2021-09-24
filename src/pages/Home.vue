@@ -1,13 +1,13 @@
 <template>
   <div>
-    <Banner />
+    <!-- <Banner />
     <Features />
     <Tokenomics />
     <RoadMap />
     <Team />
     <Media />
     <Contacts />
-    <Footer />
+    <Footer /> -->
   </div>
 </template>
 
@@ -21,23 +21,22 @@ import Media from "@/components/Media";
 import Contacts from "@/components/Contacts";
 import Footer from "@/components/Footer";
 import { mapGetters } from "vuex";
+import router from '../routes';
 
 export default {
   name: "Home",
   components: {
-    Footer,
-    Contacts,
-    Media,
-    Team,
-    RoadMap,
-    Tokenomics,
-    Features,
-    Banner,
-  },
-  computed: {
-    ...mapGetters(["signerAddress"]),
+    // Footer,
+    // Contacts,
+    // Media,
+    // Team,
+    // RoadMap,
+    // Tokenomics,
+    // Features,
+    // Banner,
   },
   mounted() {
+    router.replace({path: "/dashboard"});
     // console.log(this.signer, this.signerAddress, this.contract);
   },
 };

@@ -4,11 +4,11 @@
       <div class="row">
         <div class="item-statistic col-sm-6 col-md-3">
           <div class="text-1">Symbol</div>
-          <div class="text-2">MKAT</div>
+          <div class="text-2">BBC</div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-sm-0">
           <div class="text-1">Total Supply</div>
-          <div class="text-2">1,000,000,000 MKAT</div>
+          <div class="text-2">1,000,000,000 BBC</div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Total Burned</div>
@@ -20,7 +20,7 @@
             <a
               :href="`https://bscscan.com/address/${mkatAddress}`"
               target="_blank"
-              style="color: rgb(4, 171, 234); font-size: 12px; word-break: break-all"
+              style="color: rgb(4, 131, 174); font-size: 15px; word-break: break-all"
             >
               view on bscscan.com...
             </a>
@@ -42,18 +42,18 @@
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Current Circulating Supply</div>
-          <div class="text-2">{{ currentCircularingBalance }} MKAT</div>
+          <div class="text-2">{{ currentCircularingBalance }} BBC</div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
-          <div class="text-1">Contract BNB reward pool</div>
-          <div class="text-2">{{ contractBNBRewardPool }} BNB</div>
+          <div class="text-1">Contract CAKE reward pool</div>
+          <div class="text-2">{{ contractBNBRewardPool }} CAKE</div>
         </div>
       </div>
     </div>
     <div class="statistic-p1 mt-25">
       <div class="row">
         <div class="item-statistic col-sm-6 col-md-3">
-          <div class="text-1">Current 100,000 MKAT</div>
+          <div class="text-1">Current 100,000 BBC</div>
           <div class="text-2">
             <span class="card-panel-num">$ {{ hundredthousandmkatusd }} </span>
           </div>
@@ -120,7 +120,7 @@ export default {
   methods: {
     async loadContractInfo() {
       console.log("statistics loading");
-      
+
       const service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
       await service.initialize();
 
@@ -134,8 +134,8 @@ export default {
         utils.formatUnits(await this.getCurrentCircularingBalance(), 9)
       ).toFixed(2);
 
-      this.contractBNBRewardPool = await utils.formatEther(await this.provider.getBalance(CONTRACT_ADDRESS));
-      this.contractBNBRewardPool = parseFloat(this.contractBNBRewardPool).toFixed(2);
+      const cakeTokenContract = await service.getCakeTokenContractInstance(CONTRACT_ADDRESS);
+      this.contractBNBRewardPool =  parseFloat(utils.formatUnits(await cakeTokenContract.balanceOf(CONTRACT_ADDRESS), 18)).toFixed(2);
     },
     async calculateMarketCap(service) {
       const circularingBalance = await this.getCurrentCircularingBalance();

@@ -17,8 +17,8 @@ export enum WalletType {
   WalletConnect,
 }
 
-const WBNB_ADDRESS = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
-const BUSD_ADDRESS = "0x55d398326f99059ff775485246999027b3197955";
+const WBNB_ADDRESS = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";// mainnet: "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+const BUSD_ADDRESS = "0x55d398326f99059ff775485246999027b3197955";// mainnet: "0x55d398326f99059ff775485246999027b3197955";
 
 export default class MetamaskService {
   contract?: Contract;
@@ -31,9 +31,12 @@ export default class MetamaskService {
     this.web3Provider = new ethers.providers.Web3Provider(walletProvider);
   }
 
+
+
+
   public async initialize() { 
     this.oneMkatBnb = await this.getOneMkatPrice();
-    this.contract = await this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
+    this.contract = this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
   }
 
   public getWeb3Provider() { 
@@ -56,16 +59,41 @@ export default class MetamaskService {
       return window.ethereum;
     } else throw new Error("Invalid type");
   }
+    
+  public getCurrentWalletProvider() { return this.walletProvider; }
+
+  public async switchChainAsync(newChainId: Number): Promise<boolean>  {
+    try {
+      await this.walletProvider.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x' + (+newChainId).toString(16)}],
+      });
+      return true;
+    } catch (switchError) {
+      console.error(switchError);
+      return false;
+    }
+  }
+
 
   public getTokenContractInstance() { 
     return this.contract;
   }
 
-  private async getBabyCakeContractInstance(contractAddress: string) {
+  private getBabyCakeContractInstance(contractAddress: string) {
     const provider = this.web3Provider;
 
     const signer = provider.getSigner();
+    
     return new ethers.Contract(contractAddress, babyCakeContractAbi, signer);
+  }
+
+  private async getCakeTokenContractInstance(babyTokenAddress: string) {
+    const provider = this.web3Provider;
+    const signer = provider.getSigner();
+    const babyCakeContract = this.getBabyCakeContractInstance(babyTokenAddress);
+    
+    return new ethers.Contract(await babyCakeContract.CAKE(), babyCakeContractAbi, signer);
   }
 
   public async getPancakeRouterContractInstance(pancakeContractAddress: string) {
@@ -92,12 +120,17 @@ export default class MetamaskService {
   }
 
   private async getPricesPath(amount: BigNumber, path: string[]) {
-    if (amount.isZero()) {
+    try {
+      if (amount.isZero()) {
+        return new Array(path.length).fill(BigNumber.from([0]));
+      } else {
+        const contract = await this.getPancakeRouterContractInstance(await this.getPancakeRouterAddress());
+        const res = await contract.getAmountsOut(amount, path);
+        return res;
+      }
+    }catch(ex) { 
+      console.error(`getPricesPath() exception: ${ex}`);
       return new Array(path.length).fill(BigNumber.from([0]));
-    } else {
-      const contract = await this.getPancakeRouterContractInstance(await this.getPancakeRouterAddress());
-      const res = await contract.getAmountsOut(amount, path);
-      return res;
     }
   }
 
@@ -114,13 +147,7 @@ export default class MetamaskService {
       return 0;
     }
 
-    const res =  (await this.getPricesPath(
-      amount,
-        [
-          CONTRACT_ADDRESS,
-          BUSD_ADDRESS,
-        ]
-    ))[1];
+    const res =  (await this.getMkatBnbUsdPrices(amount))[2];
 
     return res;
   }
@@ -163,7 +190,7 @@ export default class MetamaskService {
 
   public async getPancakeRouterAddress() {
     if (!this.contract) {
-      this.contract = await this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
+      this.contract = this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
     }
 
     return await this.contract.uniswapV2Router();
