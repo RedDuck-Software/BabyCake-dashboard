@@ -63,6 +63,8 @@ export default {
   font-family: "FontAwesome";
   src: local("FontAwesome"), url(./assets/fonts/fontawesome-webfont.ttf) format("truetype");
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Rancho&display=swap");
 </style>
 
 <style>

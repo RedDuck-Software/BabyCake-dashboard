@@ -1,34 +1,75 @@
 .navbar-toggler:not(:disabled):not(.disabled) {
-    cursor: pointer;
-    background: none;
+  cursor: pointer;
+  background: none;
 }
 
 #index2 .navbar-light .navbar-toggler {
-    color: #fff;
-    outline: 0;
+  color: #fff;
+  outline: 0;
 }
 
 #index3 .navbar-light .navbar-toggler,
 #index4 .navbar-light .navbar-toggler {
-    color: #fff;
-    outline: 0;
+  color: #fff;
+  outline: 0;
 }
 
 .navbar-light .navbar-toggler {
-    color: #fff;
-    outline: 0;
+  color: #fff;
+  outline: 0;
 }
 
 .navbar-toggler i {
-    font-size: 28px;
+  font-size: 28px;
 }
 
 .nav-bg i {
-    color: #fff;
+  color: #fff;
 }
 
 .navbar-toggler {
-    border: none;
+  border: none;
 }
 
+@media only screen and (max-width: 1020px) {
+  .claim-reward .claim-reward-content {
+    margin: 166px 0px 0px;
+  }
 
+  .claim-reward .statistic-wrapper {
+    margin: 15px 0px -10px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .dashboard-content {
+    padding: 5px 10px !important;
+  }
+
+  .social-links-container {
+    position: relative;
+    right: 15px;
+  }
+
+  .claim-reward .claim-reward-content {
+    margin: 106px 0px 0px;
+  }
+
+  .claim-reward .statistic-wrapper .item-statistic {
+    padding: 8px;
+  }
+
+  .logo {
+    margin-bottom: 30px;
+  }
+
+  .section-2 {
+    width: 90vw;
+    padding: 15px 15px;
+  }
+
+  .statistic-all {
+    margin: 0px -15px;
+    padding: 40px 14px;
+  }
+}

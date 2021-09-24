@@ -75,7 +75,7 @@
         </a>
       </div>
       <div class="sidebar-menu-item sidebar-menu-item-nonlast">
-        <a href="">
+        <a href="`https://bscscan.com/address/${CONTRACT_ADDRESS}`" _blank>
           <img src="@/assets/images/charts.png" alt="" />
           <span>Contract</span>
         </a>
@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { CONTRACT_ADDRESS } from "@/constants";
+import { CONTRACT_ADDRESS } from "@/constants.ts";
 import { ContractFactory, ethers } from "ethers";
 import { mapGetters } from "vuex";
 import MetamaskService from "@/MetamaskService";
@@ -153,10 +153,12 @@ export default {
   methods: {
     async updateUserBalances() {
       this.myMkatBalance = ethers.utils.formatUnits(await this.mkatContract.balanceOf(this.signerAddress), 18);
-      this.myMkatBalanceInBUSD = parseFloat(ethers.utils.formatUnits(
-        await this.service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 18)),
-        18
-      )).toFixed(2);
+      this.myMkatBalanceInBUSD = parseFloat(
+        ethers.utils.formatUnits(
+          await this.service.getMkatValueInBUSD(ethers.utils.parseUnits(this.myMkatBalance, 18)),
+          18
+        )
+      ).toFixed(2);
     },
     async copyAddress() {
       const address = this.$refs.myAddr;
@@ -190,6 +192,8 @@ export default {
 .buyCake {
   font-weight: 500;
   padding-top: 6px;
+  font-family: "Rancho", cursive;
+  font-size: 18px;
   color: #c4c6e7;
 }
 
@@ -198,6 +202,7 @@ export default {
   flex-direction: column;
   align-items: start;
   padding: 10px 0 10px;
+  font-size: 18px;
 }
 .sidebar-menu-item {
   width: 100%;
@@ -223,7 +228,7 @@ export default {
   color: #c4c6e7;
   align-items: center;
   gap: 10px;
-  padding: 10px 0;
+  padding: 8px 0;
   padding-left: 40px;
 }
 .sidebar-menu-item a span {
@@ -245,10 +250,12 @@ export default {
   background-color: #190053;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 25px 0px;
+  margin: 15px 0px;
   color: #c4c6e7;
+  font-family: "Rancho", cursive;
+  font-size: 18px;
   border-radius: 20px;
-  padding: 12px 15px;
+  padding: 8px 15px;
   padding-left: 40px;
   gap: 10px;
 }
@@ -271,6 +278,8 @@ export default {
 .logoutText {
   color: #c4c6e7;
   font-weight: 500;
+  font-family: "Rancho", cursive;
+  font-size: 18px;
   padding-top: 4px;
 }
 

@@ -20,7 +20,7 @@
             <a
               :href="`https://bscscan.com/address/${mkatAddress}`"
               target="_blank"
-              style="color: rgb(4, 131, 174); font-size: 15px; word-break: break-all"
+              style="color: rgb(4, 131, 174); font-size: 20px; word-break: break-all"
             >
               view on bscscan.com...
             </a>
@@ -135,7 +135,9 @@ export default {
       ).toFixed(2);
 
       const cakeTokenContract = await service.getCakeTokenContractInstance(CONTRACT_ADDRESS);
-      this.contractBNBRewardPool =  parseFloat(utils.formatUnits(await cakeTokenContract.balanceOf(CONTRACT_ADDRESS), 18)).toFixed(2);
+      this.contractBNBRewardPool = parseFloat(
+        utils.formatUnits(await cakeTokenContract.balanceOf(CONTRACT_ADDRESS), 18)
+      ).toFixed(2);
     },
     async calculateMarketCap(service) {
       const circularingBalance = await this.getCurrentCircularingBalance();
