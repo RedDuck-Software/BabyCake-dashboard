@@ -318,12 +318,13 @@ export default {
 
       const web3Provider =  this.service.getWeb3Provider();
       web3Provider.provider.on("chainChanged", newNetwork => {
-          // When a Provider makes its initial connection, it emits a "network"
-          // event with a null oldNetwork along with the newNetwork. So, if the
-          // oldNetwork exists, it represents a changing network
           if(parseInt(newNetwork, 16) != 56) { 
             window.location.reload();
           }
+      });
+
+      web3Provider.provider.on("accountsChanged", ([newAddres]) => {
+          window.location.reload();
       });
 
       await this.service.initialize();
