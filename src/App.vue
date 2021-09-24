@@ -9,10 +9,36 @@
 <script>
 //import Header from "./components/Header";
 
+import { mapGetters, mapMutations } from "vuex";
+
 export default {
   name: "App",
+  computed: {
+    ...mapGetters(["signerAddress"]),
+    ...mapGetters(["walletProviderType"]),
+  },
   components: {
     //Header,
+  },
+
+  mounted() {
+    if (window.ethereum) {
+      console.debug("app.vue ethereum is available");
+      const that = this;
+      window.ethereum.on("accountsChanged", function ([accounts]) {
+          console.log("accounts: ", { accs: accounts });
+        that.updateSignerAddress(accounts);
+        window.location.reload();
+      });
+
+      window.ethereum.on("networkChanged", function (networkId) {
+        // Time to reload your interface with the new networkId
+        window.location.reload();
+      });
+    }
+  },
+  methods: {
+    ...mapMutations(["updateSignerAddress"]),
   },
 };
 </script>

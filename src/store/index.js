@@ -9,16 +9,12 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
   state: {
     signerAddress: null,
-    signer: null,
     contract: null,
     walletProviderType : null,
   },
   mutations: {
     updateSignerAddress(state, address) {
       state.signerAddress = address;
-    },
-    updateSigner(state, signer) {
-      state.signer = signer;
     },
     updateContract(state, contract) {
       state.contract = contract;
@@ -29,7 +25,6 @@ const store = new Vuex.Store({
     logout: state => {
       state.signerAddress = null;
       state.walletProviderType = null;
-      state.signer = null;
     },
   },
   getters: {

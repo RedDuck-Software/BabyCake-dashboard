@@ -254,7 +254,7 @@
 import { mapGetters } from "vuex";
 import { utils, ethers, BigNumber } from "ethers";
 
-import { CONTRACT_ADDRESS } from "@/constants";
+import { CONTRACT_ADDRESS, CHAIN_ID } from "@/constants";
 import MetamaskService from "@/MetamaskService";
 import Sidebar from "@/components/Dashboard/Sidebar";
 import Statistic from "@/components/Dashboard/Statistic";
@@ -268,19 +268,19 @@ export default {
       contract: null,
       activeItem: "one",
       maxMkatTx: null,
-      hundredThousandMKATUSD: "...",
+      hundredThousandMKATUSD: "0",
       isRewardClaimAvailable: false,
       cakeAvailableReward: "0",
       cakeTotalGainedReward: "0",
       nextClaimDate: "0",
       myBnbRewardAfterTax: 0,
-      totalBnbInPool: "...",
+      totalBnbInPool: "0",
       estimatedGas: {},
-      myMkatBalance: "...",
-      totalLiquidityPoolUSD: "...",
+      myMkatBalance: "0",
+      totalLiquidityPoolUSD: "0",
       recipientAddress: "",
       amountMkat: 0,
-      maxBNBTx: "...",
+      maxBNBTx: "0",
       provider: null,
       balanceOfAddress: 0,
     };
@@ -299,32 +299,41 @@ export default {
       return;
     }
 
+    console.debug("CURRENT CHAIN_ID IS : ", CHAIN_ID);
+
     try {
       this.$loading(true);
 
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
 
-      if (this.service.getCurrentWalletProvider().networkVersion != "56") {
-        if (!(await this.service.switchChainAsync(56))) {
-          console.log("cannot switch chain");
-          return;
+
+      const web3Provider =  this.service.getWeb3Provider();
+
+      // if(web3Provider.provider) { 
+      //   web3Provider.provider.on("chainChanged", newNetwork => {
+      //       if(parseInt(newNetwork, 16) != CHAIN_ID) { 
+      //         this.$forceUpdate();
+      //       }
+      //   });
+
+      //   web3Provider.provider.on("accountsChanged", () => {
+      //       this.$forceUpdate();
+      //   });
+      // }
+
+      if(this.service.getCurrentWalletProvider().chainId)
+      {
+        if(parseInt(this.service.getCurrentWalletProvider().chainId,16) != CHAIN_ID) { 
+          if(!(await this.service.switchChainAsync(CHAIN_ID))) { 
+            console.log("cannot switch chain");
+            return;
+          }
         }
 
         this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
       }
-
-      const web3Provider = this.service.getWeb3Provider();
-
-      if (web3Provider.provider) {
-        web3Provider.provider.on("chainChanged", newNetwork => {
-          if (parseInt(newNetwork, 16) != 56) {
-            window.location.reload();
-          }
-        });
-
-        web3Provider.provider.on("accountsChanged", ([newAddres]) => {
-          window.location.reload();
-        });
+      else  {
+        return;
       }
 
       await this.service.initialize();
@@ -353,7 +362,11 @@ export default {
 
       this.provider = this.service.getWeb3Provider();
 
-      this.balanceOfAddress = utils.formatUnits(await this.contract.balanceOf(this.signerAddress), 18);
+      const tokenBalance = await this.contract.balanceOf(this.signerAddress);
+
+      console.log("user token balance: ", parseFloat(utils.formatUnits(tokenBalance, 18)));
+
+      this.balanceOfAddress = utils.formatUnits(tokenBalance, 18);
 
       const staticRewardsInfo = await this.contract.getAccountDividendsInfo(this.signerAddress);
 

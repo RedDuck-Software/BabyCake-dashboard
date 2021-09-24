@@ -990,7 +990,9 @@ textarea::placeholder {
   border-radius: 25px;
   border: 1px solid rgb(255 118 87 / 45%);
   background-color: #190053;
+
   margin: 0 auto !important;
+
 }
 
 .connect-wallet {
@@ -1004,12 +1006,16 @@ textarea::placeholder {
 }
 
 .section-2 .text-show-1 {
+
   font-size: 22px;
+
   margin-top: 15px;
   color: #c4c6e7;
   text-align: center;
   font-weight: 500;
+
   font-family: "Rancho", cursive;
+
 }
 
 .section-2 .content-main {
@@ -1019,9 +1025,11 @@ textarea::placeholder {
   padding: 15px 5px;
   color: #190053;
   font-weight: 500;
+
   font-size: 24px;
   line-height: 1.1;
   font-family: "Rancho", cursive;
+
 }
 
 .section-2 .content-main .text-1 {

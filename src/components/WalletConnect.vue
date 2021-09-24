@@ -6,6 +6,7 @@
     </div>
     <div class="container">
       <div class="row">
+
         <div class="section-2">
           <div class="connect-to-wallet">
             <img src="@/assets/images/beaglecakeLogo.png" class="logo-section" />
@@ -40,6 +41,7 @@
               <br />
 
               <!---->
+
               <!--              <div class="how-to-connect">-->
               <!-- <a  href="https://guide.MoonKat.finance/how-to-connect-MoonKats-dapp-to-wallet" target="_blank"> How to connect MoonKat's Dapp to wallet </a> -->
               <!--              </div>-->
@@ -121,8 +123,6 @@ export default {
 
       // Subscribe to accounts change
       walletConnectProvider.on("accountsChanged", accounts => {
-        console.log("account changed: ", accounts);
-
         this.updateDataOnAccountChange(walletConnectProvider);
       });
 
@@ -133,7 +133,7 @@ export default {
 
       // Subscribe to session disconnection
       walletConnectProvider.on("disconnect", (code, reason) => {
-        console.log("Dsiconnect", reason);
+        console.log("Disconnect", reason);
 
         this.$store.commit("logout");
         this.$router.push({ path: "connect-wallet" });
@@ -172,7 +172,9 @@ html {
   display: flex;
   margin-top: -100px;
   margin-left: 30px;
+
   margin-bottom: 100px;
+
 }
 
 .logo .logo-section {
@@ -232,9 +234,11 @@ html {
   -webkit-user-select: none;
   -ms-user-select: none;
   padding: 0;
+
   font-size: 22px !important;
   font-weight: 500;
   font-family: "Rancho", cursive;
+
 }
 
 #connectBtn:active,
