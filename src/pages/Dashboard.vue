@@ -309,17 +309,17 @@ export default {
 
       const web3Provider =  this.service.getWeb3Provider();
 
-      if(web3Provider.provider) { 
-        web3Provider.provider.on("chainChanged", newNetwork => {
-            if(parseInt(newNetwork, 16) != CHAIN_ID) { 
-              this.$forceUpdate();
-            }
-        });
+      // if(web3Provider.provider) { 
+      //   web3Provider.provider.on("chainChanged", newNetwork => {
+      //       if(parseInt(newNetwork, 16) != CHAIN_ID) { 
+      //         this.$forceUpdate();
+      //       }
+      //   });
 
-        web3Provider.provider.on("accountsChanged", () => {
-            this.$forceUpdate();
-        });
-      }
+      //   web3Provider.provider.on("accountsChanged", () => {
+      //       this.$forceUpdate();
+      //   });
+      // }
 
       if(this.service.getCurrentWalletProvider().chainId)
       {
@@ -364,7 +364,11 @@ export default {
 
       this.provider = this.service.getWeb3Provider();
 
-      this.balanceOfAddress = utils.formatUnits(await this.contract.balanceOf(this.signerAddress), 18);
+      const tokenBalance = await this.contract.balanceOf(this.signerAddress);
+
+      console.log("user token balance: ", parseFloat(utils.formatUnits(tokenBalance, 18)));
+
+      this.balanceOfAddress = utils.formatUnits(tokenBalance, 18);
 
       const staticRewardsInfo = await this.contract.getAccountDividendsInfo(this.signerAddress);
 

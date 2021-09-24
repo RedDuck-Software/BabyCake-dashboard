@@ -125,8 +125,6 @@ export default {
 
       // Subscribe to accounts change
       walletConnectProvider.on("accountsChanged", accounts => {
-        console.log("account changed: ", accounts);
-
         this.updateDataOnAccountChange(walletConnectProvider);
       });
 
@@ -137,7 +135,7 @@ export default {
 
       // Subscribe to session disconnection
       walletConnectProvider.on("disconnect", (code, reason) => {
-        console.log("Dsiconnect", reason);
+        console.log("Disconnect", reason);
 
         this.$store.commit("logout");
         this.$router.push({ path: "connect-wallet" });
