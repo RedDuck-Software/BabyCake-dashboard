@@ -299,10 +299,37 @@ export default {
       this.$router.replace({ path: "connect-wallet" });
       return;
     }
+
+   
     try {
       this.$loading(true);
 
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
+
+
+      if(this.service.getCurrentWalletProvider().networkVersion != '56') { 
+        if(!(await this.service.switchChainAsync(56))) { 
+          console.log("cannot switch chain");
+          return;
+        }
+
+        this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
+      }
+
+      const web3Provider =  this.service.getWeb3Provider();
+
+      if(web3Provider.provider) { 
+        web3Provider.provider.on("chainChanged", newNetwork => {
+            if(parseInt(newNetwork, 16) != 56) { 
+              window.location.reload();
+            }
+        });
+
+        web3Provider.provider.on("accountsChanged", ([newAddres]) => {
+            window.location.reload();
+        });
+      }
+
       await this.service.initialize();
 
       await this.loadContractInfo();
@@ -313,7 +340,7 @@ export default {
       }, 10000);
     } catch (ex) {
       console.error(ex);
-      alert("An error occured. Error msg: " + ex + "Must be: BSC Mainnet");
+      alert("An error occured. Error msg: " + ex.message);
     } finally {
       this.$loading(false);
     }
