@@ -309,6 +309,8 @@ export default {
 
       const web3Provider =  this.service.getWeb3Provider();
 
+      console.log("ethereum: ", this.service.getCurrentWalletProvider());
+
       if(this.service.getCurrentWalletProvider().chainId)
       {
         if(parseInt(this.service.getCurrentWalletProvider().chainId,16) != CHAIN_ID) { 

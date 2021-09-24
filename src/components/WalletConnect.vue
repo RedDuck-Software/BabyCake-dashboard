@@ -83,12 +83,8 @@ export default {
   methods: {
     async connectMetamask() {
       if (window.ethereum != undefined) {
-        await window.ethereum.enable(); // deprecated - need to use eth_requestAccounts
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
-        const signer = provider.getSigner();
-        console.log("signer:", signer);
-        const address = await signer.getAddress();
-        this.$store.commit("updateSignerAddress", address);
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        this.$store.commit("updateSignerAddress", accounts[0]);
         this.$store.commit("updateWalletProviderType", WalletType.Metamask);
 
         this.$router.push({ path: "dashboard" });
