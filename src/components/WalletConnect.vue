@@ -6,44 +6,40 @@
     </div>
     <div class="container">
       <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
-          <div class="section-2">
-            <div class="connect-to-wallet">
-              <img src="@/assets/images/beaglecakeLogo.png" class="logo-section" />
-              <div class="text-show-1">Welcome to Beagle Cake Dapp</div>
-              <div class="content-main">
-                <div class="text-1">You are not connected to Beagle Cake Dapp yet</div>
-                <div class="line-2">
-                  To use the Dapp, make sure: <br /><span
-                    >You are using the <span class="text-color">Binance Chain</span> network</span
-                  ><br /><span>and you need to connect wallet to use</span><br />
-                  <div style="margin-top: 40px;">
-                    <a href="https://docs.binance.org/smart-chain/wallet/metamask.html" target="_blank"> Metamask</a
-                    ><br />
-                    <a href="https://docs.binance.org/wallets/trust-wallet.html" target="_blank">Trust Wallet</a><br />
-                    <a href="https://docs.binance.org/smart-chain/wallet/binance.html" target="_blank"
-                      >Binance Chain Extention Wallet</a
-                    ><br />
-                    <a href="https://docs.binance.org/wallets/safepal.html" target="_blank">SafePal</a><br />
-                  </div>
+        <div class="section-2">
+          <div class="connect-to-wallet">
+            <img src="@/assets/images/beaglecakeLogo.png" class="logo-section" />
+            <div class="text-show-1">Welcome to Beagle Cake Dapp</div>
+            <div class="content-main">
+              <div class="text-1">You are not connected to Beagle Cake Dapp yet</div>
+              <div class="line-2">
+                To use the Dapp, make sure: <br /><span
+                  >You are using the <span class="text-color">Binance Chain</span> network</span
+                ><br /><span>and you need to connect wallet to use</span><br />
+                <div style="margin-top: 40px;">
+                  <a href="https://docs.binance.org/smart-chain/wallet/metamask.html" target="_blank"> Metamask</a
+                  ><br />
+                  <a href="https://docs.binance.org/wallets/trust-wallet.html" target="_blank">Trust Wallet</a><br />
+                  <a href="https://docs.binance.org/smart-chain/wallet/binance.html" target="_blank"
+                    >Binance Chain Extention Wallet</a
+                  ><br />
+                  <a href="https://docs.binance.org/wallets/safepal.html" target="_blank">SafePal</a><br />
                 </div>
               </div>
-              <div class="button-wrapper">
-                <button
-                  v-if="!isMobile"
-                  id="connectBtn"
-                  type="button"
-                  class="el-button button-custom-new el-button--primary el-button--medium"
-                  @click="connectMetamask()"
-                >
-                  <i class="el-icon-connection"></i>
-                  <span>Connect to a wallet </span>
-                </button>
-                <br />
+            </div>
+            <div class="button-wrapper">
+              <button
+                id="connectBtn"
+                type="button"
+                class="el-button button-custom-new el-button--primary el-button--medium"
+                @click="connectMetamask()"
+              >
+                <i class="el-icon-connection"></i>
+                <span>Connect to a wallet </span>
+              </button>
+              <br />
 
-                <!---->
-              </div>
+              <!---->
               <!--              <div class="how-to-connect">-->
               <!-- <a  href="https://guide.MoonKat.finance/how-to-connect-MoonKats-dapp-to-wallet" target="_blank"> How to connect MoonKat's Dapp to wallet </a> -->
               <!--              </div>-->
@@ -176,6 +172,7 @@ html {
   display: flex;
   margin-top: -100px;
   margin-left: 30px;
+  margin-bottom: 100px;
 }
 
 .logo .logo-section {
@@ -235,8 +232,9 @@ html {
   -webkit-user-select: none;
   -ms-user-select: none;
   padding: 0;
-  font-size: 18px !important;
+  font-size: 22px !important;
   font-weight: 500;
+  font-family: "Rancho", cursive;
 }
 
 #connectBtn:active,

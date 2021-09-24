@@ -81,7 +81,6 @@
                             Total rewards: <span class="bold">{{ cakeTotalGainedReward }} CAKE</span>
                           </div>
 
-
                           <div v-if="nextClaimDate != '0'" class="title-2">
                             Next claim date: <span class="bold">{{ nextClaimDate }} </span>
                           </div>
@@ -151,7 +150,7 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1" style="color: #190053">Current 100,000 CAKE price</div>
+                            <div class="text-1">CAKE price</div>
                             <div class="text-2" style="color: #190053">
                               <span></span><span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
@@ -300,15 +299,13 @@ export default {
       return;
     }
 
-   
     try {
       this.$loading(true);
 
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
 
-
-      if(this.service.getCurrentWalletProvider().networkVersion != '56') { 
-        if(!(await this.service.switchChainAsync(56))) { 
+      if (this.service.getCurrentWalletProvider().networkVersion != "56") {
+        if (!(await this.service.switchChainAsync(56))) {
           console.log("cannot switch chain");
           return;
         }
@@ -316,17 +313,17 @@ export default {
         this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
       }
 
-      const web3Provider =  this.service.getWeb3Provider();
+      const web3Provider = this.service.getWeb3Provider();
 
-      if(web3Provider.provider) { 
+      if (web3Provider.provider) {
         web3Provider.provider.on("chainChanged", newNetwork => {
-            if(parseInt(newNetwork, 16) != 56) { 
-              window.location.reload();
-            }
+          if (parseInt(newNetwork, 16) != 56) {
+            window.location.reload();
+          }
         });
 
         web3Provider.provider.on("accountsChanged", ([newAddres]) => {
-            window.location.reload();
+          window.location.reload();
         });
       }
 
@@ -427,7 +424,7 @@ export default {
 
 <style>
 .dashboard-content {
-  padding: 0 10px;
+  padding: 10px 30px;
 }
 
 .modal-content {
@@ -441,6 +438,10 @@ export default {
   display: flex;
   align-items: center;
   gap: 5px;
+}
+
+.buyCardBody span {
+  font-size: 20px;
 }
 
 .buyCard {

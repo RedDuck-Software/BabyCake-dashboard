@@ -983,13 +983,14 @@ textarea::placeholder {
 
 /*==============connect wallet page css==============*/
 .section-2 {
-  margin: 0 auto 0 auto;
+  display: block !important;
   padding: 15px 25px;
   text-align: center;
   width: 450px;
   border-radius: 25px;
   border: 1px solid rgb(255 118 87 / 45%);
   background-color: #190053;
+  margin: 0 auto !important;
 }
 
 .connect-wallet {
@@ -1003,11 +1004,12 @@ textarea::placeholder {
 }
 
 .section-2 .text-show-1 {
-  font-size: 18px;
+  font-size: 22px;
   margin-top: 15px;
   color: #c4c6e7;
   text-align: center;
   font-weight: 500;
+  font-family: "Rancho", cursive;
 }
 
 .section-2 .content-main {
@@ -1017,8 +1019,9 @@ textarea::placeholder {
   padding: 15px 5px;
   color: #190053;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.1;
+  font-family: "Rancho", cursive;
 }
 
 .section-2 .content-main .text-1 {
@@ -1044,7 +1047,7 @@ textarea::placeholder {
 /*connect wallet page css end*/
 /*==========dashboard css==========*/
 .moonkat-sidebar {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .moonkat-sidebar .logo-and-buy .logo {
@@ -1060,14 +1063,15 @@ textarea::placeholder {
 }
 
 .moonkat-sidebar .logo-and-buy .mrat-desc {
-  font-size: 18px;
+  font-size: 20px;
+  font-family: "Rancho", cursive;
   color: #00aaa6;
   text-align: center;
   font-weight: 700;
 }
 
 .moonkat-sidebar .button-buy-mrat {
-  margin-top: 25px;
+  margin-top: 10px;
   text-align: center;
 }
 
@@ -1106,9 +1110,10 @@ textarea::placeholder {
 
 .moonkat-sidebar .address-info {
   background-color: #190053;
+  font-family: "Rancho", cursive;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin-top: 25px;
+  margin-top: 15px;
   color: #fff;
   border-radius: 20px;
   padding: 10px 15px 15px 15px;
@@ -1116,9 +1121,6 @@ textarea::placeholder {
 
 /*connect wallet page css end*/
 /*==========dashboard css==========*/
-.moonkat-sidebar {
-  padding-top: 20px;
-}
 .moonkat-sidebar .logo-and-buy .logo {
   width: 100px;
   height: 100px;
@@ -1129,19 +1131,14 @@ textarea::placeholder {
   text-align: center;
   text-transform: uppercase;
 }
-.moonkat-sidebar .button-buy-mrat {
-  margin-top: 25px;
-  text-align: center;
-  line-height: 44px;
-}
 .moonkat-sidebar .address-info .text-1 {
-  font-size: 20px;
+  font-size: 24px;
   color: #c4c6e7;
   font-weight: 500;
 }
 .moonkat-sidebar .address-info .text-2 {
   margin-top: 17px;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 1.5;
   color: #c4c6e7;
 }
@@ -1154,11 +1151,6 @@ textarea::placeholder {
   font-size: 14px;
   font-weight: 300;
   margin-top: 3px;
-}
-.moonkat-sidebar .button-buy-mrat {
-  margin-top: 25px;
-  text-align: center;
-  line-height: 44px;
 }
 .moonkat-sidebar .menu-info {
   margin-top: 25px;
@@ -1244,16 +1236,19 @@ textarea::placeholder {
 }
 .tab-card-header > .nav-tabs > li > a {
   border: 0;
+  font-family: "Rancho", cursive;
+  font-size: 20px;
   border-bottom: 2px solid transparent;
   margin-right: 0;
-  color: #fff;
+  color: #190053;
   padding: 2px 0px;
   margin-right: 21px;
 }
 .tab-card-header > .nav-tabs > li > a.show {
   border-bottom: 2px solid #ff7657;
-  color: #fff;
+  color: #190053;
   background: transparent;
+  font-family: "Rancho", cursive;
 }
 .tab-card-header > .nav-tabs > li > a:hover {
   color: #fff;
@@ -1424,17 +1419,29 @@ textarea::placeholder {
 .statistic-all {
   border-radius: 30px;
   border: 1px solid rgb(255 118 87 / 37%);
-  background-color: transparent;
-  color: #fff;
+  background-color: #190053;
   padding: 35px 35px;
   margin-top: 10px;
+  font-family: "Rancho", cursive;
 }
 .statistic-all .statistic-p1 {
   border-radius: 10px;
   border: 1px solid rgb(255 118 87 / 37%);
-  background-color: transparent;
+  background-color: #c4c6e7;
   padding: 15px 27px;
 }
+.statistic-all .statistic-p1 .text-1 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #190053;
+}
+.statistic-all .statistic-p1 .text-2[data-v-6048b2f5] {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 8px;
+  color: #190053;
+}
+
 .statistic-all .mt-25 {
   margin-top: 25px;
 }
@@ -1448,14 +1455,12 @@ textarea::placeholder {
 }
 /*claim bnb css*/
 .claim-reward .claim-reward-content {
-  margin-top: 25px;
+  margin: 166px 30px 0px;
   border-radius: 20px;
-  border: 1px solid rgb(255 118 87 / 37%);
-  background-color: transparent;
-}
-
-.claim-reward .claim-reward-content > .row {
-  padding: 25px;
+  background-color: #c4c6e7;
+  padding: 10px;
+  font-family: "Rancho", cursive;
+  font-size: 20px;
 }
 
 .bought-tokens-claimer * {
@@ -1544,25 +1549,6 @@ textarea::placeholder {
 
 .tab-card-header > .nav-tabs > li {
   margin-right: 2px;
-}
-
-.tab-card-header > .nav-tabs > li > a {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  margin-right: 0;
-  color: #190053;
-  padding: 2px 0px;
-  margin-right: 21px;
-}
-
-.tab-card-header > .nav-tabs > li > a.show {
-  border-bottom: 2px solid #ff7657;
-  color: #190053;
-  background: transparent;
-}
-
-.tab-card-header > .nav-tabs > li > a:hover {
-  color: #fff;
 }
 
 .tab-card-header > .tab-content {
@@ -1729,65 +1715,10 @@ textarea::placeholder {
   border-radius: 10px !important;
 }
 /*=======statistic css========*/
-.statistic-all {
-  border-radius: 30px;
-  border: 1px solid rgb(255 118 87 / 37%);
-  background-color: #190053;
-  padding: 35px 35px;
-  margin-top: 10px;
-}
-.statistic-all .statistic-p1 {
-  border-radius: 10px;
-  border: 1px solid rgb(255 118 87 / 37%);
-  background-color: #c4c6e7;
-  padding: 15px 27px;
-}
-.statistic-all .statistic-p1 .text-1 {
-  font-size: 15px;
-  font-weight: 500;
-  color: #190053;
-}
-.statistic-all .statistic-p1 .text-2[data-v-6048b2f5] {
-  font-size: 15px;
-  font-weight: 400;
-  margin-top: 8px;
-  color: #190053;
-}
-
-.moonkat-sidebar .address-info .text-3 {
-  font-size: 14px;
-  font-weight: 700;
-  margin-top: 8px;
-}
-.statistic-all .mt-25 {
-  margin-top: 25px;
-}
 .hidden-input {
   opacity: 0;
   height: 0 !important;
 }
-.statistic-all .statistic-p1 .row-2 {
-  border-top: 2px solid hsla(0, 0%, 100%, 0.5019607843137255);
-  margin: 20px 100px;
-}
-
-.moonkat-sidebar .address-info .text-4 {
-  font-size: 11px;
-  font-weight: 300;
-  margin-top: 3px;
-}
-
-.moonkat-sidebar .address-info .text-2 {
-  margin-top: 17px;
-  font-size: 13px;
-  line-height: 1.5;
-}
-
-.moonkat-sidebar .address-info .text-3 {
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .moonkat-sidebar .menu-info {
   margin-top: 25px;
   border: 1px solid rgb(255 118 87 / 37%);
@@ -1878,35 +1809,8 @@ textarea::placeholder {
   margin-right: 2px;
 }
 
-.tab-card-header > .nav-tabs > li > a {
-  border: 0;
-  border-bottom: 2px solid transparent;
-  margin-right: 0;
-  color: #190053;
-  padding: 2px 0px;
-  margin-right: 21px;
-}
-
-.tab-card-header > .nav-tabs > li > a.show {
-  border-bottom: 2px solid #ff7657;
-  color: #190053;
-  background: transparent;
-}
-
-.tab-card-header > .nav-tabs > li > a:hover {
-  color: #fff;
-}
-
 .tab-card-header > .tab-content {
   padding-bottom: 0;
-}
-
-/*claim bnb css*/
-.claim-reward .claim-reward-content {
-  margin: 196px 30px 0px;
-  border-radius: 20px;
-  background-color: #c4c6e7;
-  padding: 15px;
 }
 
 .bought-tokens-claimer * {
@@ -1954,7 +1858,7 @@ textarea::placeholder {
 }
 
 .claim-reward .claim-reward-content .p-2 .title-1 {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
   text-align: center;
 }
@@ -1964,7 +1868,7 @@ textarea::placeholder {
 }
 
 .claim-reward .claim-reward-content .p-2 .title-noted {
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 500;
   color: #04abea;
   text-align: center;
@@ -2032,6 +1936,7 @@ textarea::placeholder {
 
 .claim-reward .statistic-wrapper {
   margin: 25px 30px 10px;
+  font-family: "Rancho", cursive;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2043,13 +1948,13 @@ textarea::placeholder {
 }
 
 .claim-reward .statistic-wrapper .item-statistic .text-1 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .claim-reward .statistic-wrapper .item-statistic .text-2 {
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 /*========dashboard css end========*/
