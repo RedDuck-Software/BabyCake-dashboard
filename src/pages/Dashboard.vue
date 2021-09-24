@@ -300,35 +300,43 @@ export default {
       return;
     }
 
-   
+    console.debug("CURRENT CHAIN_ID IS : ", CHAIN_ID);
+
     try {
       this.$loading(true);
 
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
-
-
-      if(this.service.getCurrentWalletProvider().networkVersion.toString() != CHAIN_ID.toString()) { 
-        if(!(await this.service.switchChainAsync(CHAIN_ID))) { 
-          console.log("cannot switch chain");
-          return;
-        }
-
-        this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
-      }
 
       const web3Provider =  this.service.getWeb3Provider();
 
       if(web3Provider.provider) { 
         web3Provider.provider.on("chainChanged", newNetwork => {
             if(parseInt(newNetwork, 16) != CHAIN_ID) { 
-              window.location.reload();
+              this.$forceUpdate();
             }
         });
 
         web3Provider.provider.on("accountsChanged", () => {
-            window.location.reload();
+            this.$forceUpdate();
         });
       }
+
+      if(this.service.getCurrentWalletProvider().chainId)
+      {
+        if(parseInt(this.service.getCurrentWalletProvider().chainId,16) != CHAIN_ID) { 
+          if(!(await this.service.switchChainAsync(CHAIN_ID))) { 
+            console.log("cannot switch chain");
+            return;
+          }
+        }
+
+        this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
+      }
+      else  {
+        return;
+      }
+
+
 
       await this.service.initialize();
 
