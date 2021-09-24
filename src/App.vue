@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isLoaded" id="app">
+  <div id="app">
     <!-- <Header v-if="!$route.meta.hideNavigation" /> -->
     <router-view></router-view>
     <!--    <Preloader />-->
@@ -22,11 +22,6 @@ export default {
   },
   components: {
     //Header,
-  },
-  data() { 
-    return { 
-      isLoaded: false,
-    }
   },
   async mounted() {
     console.debug("wallet provider type: ", this.walletProviderType);
@@ -61,8 +56,6 @@ export default {
         window.location.reload();
       });
     }
-
-    this.isLoaded = true;
   },
   methods: {
     ...mapMutations(["updateSignerAddress", "logout"]),
