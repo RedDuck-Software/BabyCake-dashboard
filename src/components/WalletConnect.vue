@@ -94,18 +94,7 @@ export default {
         this.$store.commit("updateWalletProviderType", WalletType.Metamask);
 
         this.$router.push({ path: "dashboard" });
-
-        window.ethereum.on("accountsChanged", function(accounts) {
-          // Time to reload your interface with accounts[0]!
-          this.$store.commit("logout");
-          window.location.reload();
-        });
-
-        window.ethereum.on("networkChanged", function(networkId) {
-          // Time to reload your interface with the new networkId
-          this.$store.commit("logout");
-          window.location.reload();
-        });
+        
       } else {
         if (!this.isAndroid && !this.isIos) alert("Please install MetaMask!");
       }
