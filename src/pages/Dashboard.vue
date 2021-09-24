@@ -109,7 +109,7 @@
                                 </div>
                               </button>
                             </div>
-                            <span v-if="balanceOfAddress == 0" class="text-warning mt-4"
+                            <span v-if="balanceOfAddress === 0" class="text-warning mt-4"
                               >*Claim is not available. You must to own BabyCake token to start gaining your static
                               rewards</span
                             >
@@ -282,7 +282,7 @@ export default {
       amountMkat: 0,
       maxBNBTx: "0",
       provider: null,
-      balanceOfAddress: 0,
+      balanceOfAddress: "0",
     };
   },
   computed: {
@@ -308,18 +308,6 @@ export default {
 
 
       const web3Provider =  this.service.getWeb3Provider();
-
-      // if(web3Provider.provider) { 
-      //   web3Provider.provider.on("chainChanged", newNetwork => {
-      //       if(parseInt(newNetwork, 16) != CHAIN_ID) { 
-      //         this.$forceUpdate();
-      //       }
-      //   });
-
-      //   web3Provider.provider.on("accountsChanged", () => {
-      //       this.$forceUpdate();
-      //   });
-      // }
 
       if(this.service.getCurrentWalletProvider().chainId)
       {

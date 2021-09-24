@@ -10,6 +10,9 @@
 //import Header from "./components/Header";
 
 import { mapGetters, mapMutations } from "vuex";
+import MetamaskService from "@/MetamaskService";
+import { ethers } from "ethers";
+
 
 export default {
   name: "App",
@@ -20,8 +23,25 @@ export default {
   components: {
     //Header,
   },
+  async mounted() {
+    console.debug("wallet provider type: ", this.walletProviderType);
+    console.debug("signerAddress: ", this.signerAddress);
 
-  mounted() {
+    if(this.walletProviderType == null || this.signerAddress == null ) { 
+      this.logout();
+    }
+    else {
+
+      const walletProvider = await MetamaskService.createWalletProviderFromType(this.walletProviderType)
+
+      const web3Provider = new ethers.providers.Web3Provider(walletProvider);
+
+      const signer = web3Provider.getSigner();
+
+      this.updateSignerAddress(await signer.getAddress());
+    }
+
+
     if (window.ethereum) {
       console.debug("app.vue ethereum is available");
       const that = this;
@@ -38,7 +58,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["updateSignerAddress"]),
+    ...mapMutations(["updateSignerAddress", "logout"]),
   },
 };
 </script>
