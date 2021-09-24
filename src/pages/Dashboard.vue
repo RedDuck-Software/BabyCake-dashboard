@@ -255,7 +255,7 @@
 import { mapGetters } from "vuex";
 import { utils, ethers, BigNumber } from "ethers";
 
-import { CONTRACT_ADDRESS } from "@/constants";
+import { CONTRACT_ADDRESS, CHAIN_ID } from "@/constants";
 import MetamaskService from "@/MetamaskService";
 import Sidebar from "@/components/Dashboard/Sidebar";
 import Statistic from "@/components/Dashboard/Statistic";
@@ -269,19 +269,19 @@ export default {
       contract: null,
       activeItem: "one",
       maxMkatTx: null,
-      hundredThousandMKATUSD: "...",
+      hundredThousandMKATUSD: "0",
       isRewardClaimAvailable: false,
       cakeAvailableReward: "0",
       cakeTotalGainedReward: "0",
       nextClaimDate: "0",
       myBnbRewardAfterTax: 0,
-      totalBnbInPool: "...",
+      totalBnbInPool: "0",
       estimatedGas: {},
-      myMkatBalance: "...",
-      totalLiquidityPoolUSD: "...",
+      myMkatBalance: "0",
+      totalLiquidityPoolUSD: "0",
       recipientAddress: "",
       amountMkat: 0,
-      maxBNBTx: "...",
+      maxBNBTx: "0",
       provider: null,
       balanceOfAddress: 0,
     };
@@ -307,8 +307,8 @@ export default {
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
 
 
-      if(this.service.getCurrentWalletProvider().networkVersion != '56') { 
-        if(!(await this.service.switchChainAsync(56))) { 
+      if(this.service.getCurrentWalletProvider().networkVersion.toString() != CHAIN_ID.toString()) { 
+        if(!(await this.service.switchChainAsync(CHAIN_ID))) { 
           console.log("cannot switch chain");
           return;
         }
@@ -320,12 +320,12 @@ export default {
 
       if(web3Provider.provider) { 
         web3Provider.provider.on("chainChanged", newNetwork => {
-            if(parseInt(newNetwork, 16) != 56) { 
+            if(parseInt(newNetwork, 16) != CHAIN_ID) { 
               window.location.reload();
             }
         });
 
-        web3Provider.provider.on("accountsChanged", ([newAddres]) => {
+        web3Provider.provider.on("accountsChanged", () => {
             window.location.reload();
         });
       }
