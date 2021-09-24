@@ -317,15 +317,18 @@ export default {
       }
 
       const web3Provider =  this.service.getWeb3Provider();
-      web3Provider.provider.on("chainChanged", newNetwork => {
-          if(parseInt(newNetwork, 16) != 56) { 
-            window.location.reload();
-          }
-      });
 
-      web3Provider.provider.on("accountsChanged", ([newAddres]) => {
-          window.location.reload();
-      });
+      if(web3Provider.provider) { 
+        web3Provider.provider.on("chainChanged", newNetwork => {
+            if(parseInt(newNetwork, 16) != 56) { 
+              window.location.reload();
+            }
+        });
+
+        web3Provider.provider.on("accountsChanged", ([newAddres]) => {
+            window.location.reload();
+        });
+      }
 
       await this.service.initialize();
 
