@@ -1,7 +1,7 @@
-export const CONTRACT_ADDRESS = "0xA365542194Bb3ba9461cF305d7270A638CB4b784";
+export const CONTRACT_ADDRESS = "0x385957D64Be768d05F21909E42703bfd9A5D59aB";
 export const BURN_ADDRESS = "0x000000000000000000000000000000000000dEaD";
 
-export const CHAIN_ID = 97;
+export const CHAIN_ID = 56;
 
 export const pancackePairContractAbi = [
   {
