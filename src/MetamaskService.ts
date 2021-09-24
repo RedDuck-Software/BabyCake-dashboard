@@ -31,6 +31,9 @@ export default class MetamaskService {
     this.web3Provider = new ethers.providers.Web3Provider(walletProvider);
   }
 
+
+
+
   public async initialize() { 
     this.oneMkatBnb = await this.getOneMkatPrice();
     this.contract = this.getBabyCakeContractInstance(CONTRACT_ADDRESS);
@@ -56,6 +59,22 @@ export default class MetamaskService {
       return window.ethereum;
     } else throw new Error("Invalid type");
   }
+    
+  public getCurrentWalletProvider() { return this.walletProvider; }
+
+  public async switchChainAsync(newChainId: Number): Promise<boolean>  {
+    try {
+      await this.walletProvider.request({
+          method: 'wallet_switchEthereumChain',
+          params: [{ chainId: '0x' + (+newChainId).toString(16)}],
+      });
+      return true;
+    } catch (switchError) {
+      console.error(switchError);
+      return false;
+    }
+  }
+
 
   public getTokenContractInstance() { 
     return this.contract;
