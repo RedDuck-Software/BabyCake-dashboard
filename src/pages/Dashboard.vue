@@ -300,10 +300,12 @@ export default {
       return;
     }
 
+   
     try {
       this.$loading(true);
 
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
+
 
       if(this.service.getCurrentWalletProvider().networkVersion != '56') { 
         if(!(await this.service.switchChainAsync(56))) { 
@@ -313,6 +315,16 @@ export default {
 
         this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
       }
+
+      const web3Provider =  this.service.getWeb3Provider();
+      web3Provider.provider.on("chainChanged", newNetwork => {
+          // When a Provider makes its initial connection, it emits a "network"
+          // event with a null oldNetwork along with the newNetwork. So, if the
+          // oldNetwork exists, it represents a changing network
+          if(parseInt(newNetwork, 16) != 56) { 
+            window.location.reload();
+          }
+      });
 
       await this.service.initialize();
 
