@@ -6,7 +6,7 @@
           <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="moonKat" />
         </router-link>
       </div>
-      <div class="mrat-text hide-on-mobile" style="color: #190053">babycake</div>
+      <div class="mrat-text hide-on-mobile" style="color: #190053">beaglecake</div>
       <div class="mrat-desc">A new way to earn CAKE</div>
       <div class="button-buy-mrat hide-on-mobile">
         <a
