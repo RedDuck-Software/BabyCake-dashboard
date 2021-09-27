@@ -306,14 +306,21 @@ export default {
 
       this.service = new MetamaskService(await MetamaskService.createWalletProviderFromType(this.walletProviderType));
 
-
       const web3Provider =  this.service.getWeb3Provider();
 
-      console.log("ethereum: ", this.service.getCurrentWalletProvider());
+      const currentProvider =  { ...web3Provider };
 
-      if(this.service.getCurrentWalletProvider().chainId)
+      const networkResult = await currentProvider._networkPromise;
+
+      console.log("web3Provider: ", currentProvider);
+
+      console.debug("cur chain id from window.ethereum is ", networkResult.chainId);
+
+      if(networkResult.chainId != null)
       {
-        if(parseInt(this.service.getCurrentWalletProvider().chainId,16) != CHAIN_ID) { 
+        console.debug("chain id is not null!");
+
+        if(networkResult.chainId != CHAIN_ID) { 
           if(!(await this.service.switchChainAsync(CHAIN_ID))) { 
             console.log("cannot switch chain");
             return;
