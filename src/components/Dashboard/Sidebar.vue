@@ -17,7 +17,7 @@
           <div class="buyCard">
             <div class="buyCardBody">
               <img src="@/assets/images/shop.png" alt="" />
-              <span class="buyCake">BUY CAKE</span>
+              <span class="buyCake">BUY BEAGLECAKE</span>
             </div>
           </div>
         </a>
@@ -44,7 +44,7 @@
           ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on Bscscan
         </a>
       </div>
-      <div class="text-2">Your Baby Cake balance:</div>
+      <div class="text-2">Your Beagle Cake balance:</div>
       <div class="text-3">
         BBC
         <span> {{ myMkatBalance }} </span><br />

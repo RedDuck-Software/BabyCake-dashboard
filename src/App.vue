@@ -13,7 +13,6 @@ import { mapGetters, mapMutations } from "vuex";
 import MetamaskService from "@/MetamaskService";
 import { ethers } from "ethers";
 
-
 export default {
   name: "App",
   computed: {
@@ -27,12 +26,10 @@ export default {
     console.debug("wallet provider type: ", this.walletProviderType);
     console.debug("signerAddress: ", this.signerAddress);
 
-    if(this.walletProviderType == null || this.signerAddress == null ) { 
+    if (this.walletProviderType == null || this.signerAddress == null) {
       this.logout();
-    }
-    else {
-
-      const walletProvider = await MetamaskService.createWalletProviderFromType(this.walletProviderType)
+    } else {
+      const walletProvider = await MetamaskService.createWalletProviderFromType(this.walletProviderType);
 
       const web3Provider = new ethers.providers.Web3Provider(walletProvider);
 
@@ -41,17 +38,16 @@ export default {
       this.updateSignerAddress(await signer.getAddress());
     }
 
-
     if (window.ethereum) {
       console.debug("app.vue ethereum is available");
       const that = this;
-      window.ethereum.on("accountsChanged", function ([accounts]) {
-          console.log("accounts: ", { accs: accounts });
+      window.ethereum.on("accountsChanged", function([accounts]) {
+        console.log("accounts: ", { accs: accounts });
         that.updateSignerAddress(accounts);
         window.location.reload();
       });
 
-      window.ethereum.on("networkChanged", function (networkId) {
+      window.ethereum.on("networkChanged", function(networkId) {
         // Time to reload your interface with the new networkId
         window.location.reload();
       });

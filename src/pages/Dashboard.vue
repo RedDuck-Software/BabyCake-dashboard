@@ -24,7 +24,7 @@
                             aria-controls="One"
                             aria-selected="true"
                             @click.prevent="setActive('one')"
-                            >Claim BNB</a
+                            >Claim CAKE</a
                           >
                         </li>
                         <li class="nav-item">
@@ -103,7 +103,7 @@
                                   <i class="fa fa-gift"></i>
                                   <div class="buyCard">
                                     <div class="buyCardBody">
-                                      <span>Claim my Reward</span>
+                                      <span>Claim my CAKE</span>
                                     </div>
                                   </div>
                                 </div>
@@ -150,7 +150,7 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">CAKE price</div>
+                            <div class="text-1">BEAGLECAKE price</div>
                             <div class="text-2" style="color: #190053">
                               <span></span><span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
