@@ -70,14 +70,24 @@
           <span>Disclaimer</span>
         </a>
       </div>
-      
-      <div class="sidebar-menu-item sidebar-menu-item-nonlast" @click="redirectTo(`https://bscscan.com/address/${CONTRACT_ADDRESS}`)">
+
+      <div
+        class="sidebar-menu-item sidebar-menu-item-nonlast"
+        @click="redirectTo(`https://bscscan.com/address/${CONTRACT_ADDRESS}`)"
+      >
         <a>
           <img src="@/assets/images/charts.png" alt="" />
           <span>Contract</span>
         </a>
       </div>
-      <div class="sidebar-menu-item" @click="redirectTo(`https://wonderful-coast-093812910.azurestaticapps.net/token0Id=${CONTRACT_ADDRESS}?token1Id=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`)">
+      <div
+        class="sidebar-menu-item"
+        @click="
+          redirectTo(
+            `https://wonderful-coast-093812910.azurestaticapps.net/token0Id=${CONTRACT_ADDRESS}?token1Id=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`
+          )
+        "
+      >
         <a>
           <img src="@/assets/images/chartsup.png" alt="" />
           <span>Chart</span>
@@ -129,7 +139,7 @@ export default {
   computed: {
     ...mapGetters(["signerAddress"]),
     ...mapGetters(["walletProviderType"]),
-    CONTRACT_ADDRESS()  {
+    CONTRACT_ADDRESS() {
       return CONTRACT_ADDRESS;
     },
   },
@@ -151,7 +161,7 @@ export default {
     setTimeout(this.updateUserBalance, 600000);
   },
   methods: {
-    redirectTo(redirectUrl) { 
+    redirectTo(redirectUrl) {
       window.location.href = redirectUrl;
     },
     async updateUserBalances() {
