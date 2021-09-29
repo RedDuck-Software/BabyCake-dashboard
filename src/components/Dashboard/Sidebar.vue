@@ -3,7 +3,7 @@
     <div class="logo-and-buy">
       <div class="text-center">
         <router-link :to="{ name: 'Home' }">
-          <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="moonKat" />
+          <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="BeagleCake" />
         </router-link>
       </div>
       <div class="mrat-text hide-on-mobile" style="color: #190053">beaglecake</div>

@@ -4,11 +4,11 @@
       <div class="row">
         <div class="item-statistic col-sm-6 col-md-3">
           <div class="text-1">Symbol</div>
-          <div class="text-2">BBC</div>
+          <div class="text-2">BCAKE </div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-sm-0">
           <div class="text-1">Total Supply</div>
-          <div class="text-2">100,000,000,000 BBC</div>
+          <div class="text-2">100,000,000,000 BCAKE </div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Total Burned</div>
@@ -42,7 +42,7 @@
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Current Circulating Supply</div>
-          <div class="text-2">{{ currentCircularingBalance }} BBC</div>
+          <div class="text-2">{{ currentCircularingBalance }} BCAKE </div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Contract CAKE reward pool</div>

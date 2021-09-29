@@ -126,7 +126,7 @@
                           <div class="col-sm-8 p-2">
                             <div class="text-1">Total Supply</div>
                             <div class="text-2" style="color: #190053">
-                              <span class="card-panel-num">100,000,000,000 BBC</span>
+                              <span class="card-panel-num">100,000,000,000 BCAKE </span>
                             </div>
                           </div>
                         </div>
@@ -251,8 +251,8 @@
         <b-button class="mt-3" block>
           <ShareNetwork
             network="twitter"
-            url="https://moonkat.net/"
-            :title="`I just claimed ${cakeAvailableReward} CAKE only by holding BBC token. You can try it too!`"
+            url="https://beaglecake-75c05.web.app/"
+            :title="`I just claimed ${cakeAvailableReward} CAKE only by holding BCAKE  token. You can try it too!`"
             @open="open"
           >
             Of course!
