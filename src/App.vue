@@ -26,7 +26,7 @@ export default {
     console.debug("wallet provider type: ", this.walletProviderType);
     console.debug("signerAddress: ", this.signerAddress);
 
-    if (this.walletProviderType == null || this.signerAddress == null || this.selectedAddress == null) {
+    if (this.walletProviderType == null || this.signerAddress == null) {
       this.logout();
     } else {
       const walletProvider = await MetamaskService.createWalletProviderFromType(this.walletProviderType);
