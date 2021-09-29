@@ -131,7 +131,7 @@ export default {
       this.totalBurn = await this.calculateTotalBurnPercent(service);
 
       this.currentCircularingBalance = parseFloat(
-        utils.formatUnits(await this.getCurrentCircularingBalance(), 9)
+        utils.formatUnits(await this.getCurrentCircularingBalance(), 18)
       ).toFixed(2);
 
       const cakeTokenContract = await service.getCakeTokenContractInstance(CONTRACT_ADDRESS);
