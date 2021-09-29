@@ -992,7 +992,6 @@ textarea::placeholder {
   background-color: #190053;
 
   margin: 0 auto !important;
-
 }
 
 .connect-wallet {
@@ -1006,7 +1005,6 @@ textarea::placeholder {
 }
 
 .section-2 .text-show-1 {
-
   font-size: 22px;
 
   margin-top: 15px;
@@ -1015,7 +1013,6 @@ textarea::placeholder {
   font-weight: 500;
 
   font-family: "Rancho", cursive;
-
 }
 
 .section-2 .content-main {
@@ -1029,7 +1026,6 @@ textarea::placeholder {
   font-size: 24px;
   line-height: 1.1;
   font-family: "Rancho", cursive;
-
 }
 
 .section-2 .content-main .text-1 {
@@ -1905,14 +1901,14 @@ textarea::placeholder {
 }
 
 .claim-reward .claim-reward-content .button-wrapper .button-custom-new:hover div div span {
-  color: #f0f0ff;
-  transition: color 0.3s linear;
+  color: #f0f0ffef;
+  transition: color 0.15s linear;
 }
 
-.button-custom-new:disabled {
+/* .button-custom-new:disabled {
   background-image: -webkit-gradient(linear, left top, right top, from(#6e6e6e), to(#dbdbdb)) !important;
   background-image: linear-gradient(90deg, #6e6e6e, #dbdbdb) !important;
-}
+} */
 
 .claim-reward .item-statistic .img-icon {
   width: 54px;
