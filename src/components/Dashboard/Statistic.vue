@@ -4,11 +4,11 @@
       <div class="row">
         <div class="item-statistic col-sm-6 col-md-3">
           <div class="text-1">Symbol</div>
-          <div class="text-2">BCAKE </div>
+          <div class="text-2">{{tokenSymbol}} </div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-sm-0">
           <div class="text-1">Total Supply</div>
-          <div class="text-2">100,000,000,000 BCAKE </div>
+          <div class="text-2">100,000,000,000 {{tokenSymbol}} </div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Total Burned</div>
@@ -42,7 +42,7 @@
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Current Circulating Supply</div>
-          <div class="text-2">{{ currentCircularingBalance }} BCAKE </div>
+          <div class="text-2">{{ currentCircularingBalance }} {{tokenSymbol}} </div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Contract CAKE reward pool</div>
@@ -53,7 +53,7 @@
     <div class="statistic-p1 mt-25">
       <div class="row">
         <div class="item-statistic col-sm-6 col-md-3">
-          <div class="text-1">100,000 BEAGLE CAKE price</div>
+          <div class="text-1">100,000 {{tokenSymbol}} price</div>
           <div class="text-2">
             <span class="card-panel-num">$ {{ hundredthousandmkatusd }} </span>
           </div>
@@ -106,6 +106,7 @@ export default {
       contractBNBRewardPool: "...",
       provider: null,
       totalBurn: "...",
+      tokenSymbol: "",
     };
   },
   computed: {
@@ -125,6 +126,8 @@ export default {
       await service.initialize();
 
       this.provider = service.getWeb3Provider();
+
+      this.tokenSymbol = await this.contract.symbol();
 
       this.marketCap = parseFloat(await this.calculateMarketCap(service)).toFixed(2);
 

@@ -46,7 +46,7 @@
       </div>
       <div class="text-2">Your Beagle Cake balance:</div>
       <div class="text-3">
-        BCAKE
+        {{tokenSymbol}}
         <span> {{ myMkatBalance }} </span><br />
         ({{ myMkatBalanceInBUSD }}$)
       </div>
@@ -134,6 +134,7 @@ export default {
       myMkatBalanceInBUSD: "0.00",
       mkatContract: null,
       service: null,
+      tokenSymbol: "",
     };
   },
   computed: {
@@ -155,6 +156,7 @@ export default {
     await this.service.initialize();
 
     this.mkatContract = this.service.getTokenContractInstance();
+    this.tokenSymbol = await this.mkatContract.symbol();
 
     this.updateUserBalances();
 

@@ -38,12 +38,6 @@
                 <span>Connect to a wallet </span>
               </button>
               <br />
-
-              <!---->
-
-              <!--              <div class="how-to-connect">-->
-              <!-- <a  href="https://guide.MoonKat.finance/how-to-connect-MoonKats-dapp-to-wallet" target="_blank"> How to connect MoonKat's Dapp to wallet </a> -->
-              <!--              </div>-->
             </div>
           </div>
         </div>
