@@ -121,6 +121,19 @@
                       <div class="item-statistic">
                         <div class="row">
                           <div class="col-sm-4 p-1">
+                            <img src="@/assets/images/beaglemoney.png" class="img-icon" />
+                          </div>
+                          <div class="col-sm-8 p-2">
+                            <div class="text-1">Max Transaction Amount</div>
+                            <div class="text-2" style="color: #190053">
+                              <span class="card-panel-num">$ {{ maxMkatTx }} </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="item-statistic">
+                        <div class="row">
+                          <div class="col-sm-4 p-1">
                             <img src="@/assets/images/beaglepancake2.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
@@ -150,9 +163,9 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">BEAGLECAKE price</div>
+                            <div class="text-1">BEAGLE CAKE price</div>
                             <div class="text-2" style="color: #190053">
-                              <span></span><span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
+                              <span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
                           </div>
                         </div>
@@ -267,7 +280,7 @@ export default {
       service: null,
       contract: null,
       activeItem: "one",
-      maxMkatTx: null,
+      maxMkatTx: 0,
       hundredThousandMKATUSD: "0",
       isRewardClaimAvailable: false,
       cakeAvailableReward: "0",

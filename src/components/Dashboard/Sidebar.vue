@@ -7,7 +7,7 @@
         </router-link>
       </div>
       <div class="mrat-text hide-on-mobile" style="color: #190053">beaglecake</div>
-      <div class="mrat-desc">A new way to earn CAKE</div>
+      <div class="mrat-desc">A new way to earn BEAGLE CAKE</div>
       <div class="button-buy-mrat hide-on-mobile">
         <a
           href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x38bd8cd90374dbc903aed9d2ee28f5ab856342ce"
@@ -17,7 +17,7 @@
           <div class="buyCard">
             <div class="buyCardBody">
               <img src="@/assets/images/shop.png" alt="" />
-              <span class="buyCake">BUY BEAGLECAKE</span>
+              <span class="buyCake">BUY BEAGLE CAKE</span>
             </div>
           </div>
         </a>
@@ -46,7 +46,7 @@
       </div>
       <div class="text-2">Your Beagle Cake balance:</div>
       <div class="text-3">
-        BBC
+        BCAKE
         <span> {{ myMkatBalance }} </span><br />
         ({{ myMkatBalanceInBUSD }}$)
       </div>
