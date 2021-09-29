@@ -316,6 +316,8 @@ export default {
       return;
     }
 
+    console.log(window.ethereum);
+
     console.debug("CURRENT CHAIN_ID IS : ", CHAIN_ID);
 
     try {
