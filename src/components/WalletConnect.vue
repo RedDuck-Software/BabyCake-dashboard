@@ -6,7 +6,6 @@
     </div>
     <div class="container">
       <div class="row">
-
         <div class="section-2">
           <div class="connect-to-wallet">
             <img src="@/assets/images/beaglecakeLogo.png" class="logo-section" />
@@ -74,7 +73,7 @@ export default {
   mounted() {
     this.detectMobile();
 
-    console.log(this.signerAddress);
+    console.log("Signer address", this.signerAddress);
 
     if (this.signerAddress) {
       this.$router.replace({ path: "dashboard" });
@@ -83,12 +82,11 @@ export default {
   methods: {
     async connectMetamask() {
       if (window.ethereum != undefined) {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
         this.$store.commit("updateSignerAddress", accounts[0]);
         this.$store.commit("updateWalletProviderType", WalletType.Metamask);
 
         this.$router.push({ path: "dashboard" });
-        
       } else {
         if (!this.isAndroid && !this.isIos) alert("Please install MetaMask!");
       }
@@ -159,7 +157,6 @@ html {
   margin-left: 30px;
 
   margin-bottom: 100px;
-
 }
 
 .logo .logo-section {
@@ -223,7 +220,6 @@ html {
   font-size: 22px !important;
   font-weight: 500;
   font-family: "Rancho", cursive;
-
 }
 
 #connectBtn:active,
