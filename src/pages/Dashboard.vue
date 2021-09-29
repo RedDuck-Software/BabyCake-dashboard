@@ -264,7 +264,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import { utils, ethers, BigNumber } from "ethers";
 
 import { CONTRACT_ADDRESS, CHAIN_ID } from "@/constants";
@@ -306,8 +306,12 @@ export default {
     cakeAvailableReward() {},
   },
   async mounted() {
-    if (!this.signerAddress) {
+    console.debug('signer address: ', this.signerAddress);
+    console.debug('wallet provder: ', this.walletProviderType);
+
+    if ((this.walletProviderType == null || this.walletProviderType == undefined)  || !this.signerAddress) {
       console.error("user`s wallet is not connected");
+      this.logout();
       this.$router.replace({ path: "connect-wallet" });
       return;
     }
@@ -321,7 +325,15 @@ export default {
 
       const web3Provider = this.service.getWeb3Provider();
 
+      await web3Provider.provider.enable();
+
       const currentProvider = { ...web3Provider };
+
+      if(currentProvider.provider.selectedAddress == null) { 
+        console.error("user`s wallet is not connected");
+        this.logout();
+        this.$router.replace({ path: "connect-wallet" });
+      }
 
       const networkResult = await currentProvider._networkPromise;
 
@@ -432,6 +444,7 @@ export default {
         this.$loading(false);
       }
     },
+     ...mapMutations(["logout"]),
   },
 };
 </script>
