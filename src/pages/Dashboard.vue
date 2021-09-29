@@ -124,9 +124,9 @@
                             <img src="@/assets/images/beaglemoney.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">Max Transaction Amount</div>
+                            <div class="text-1">Total Supply</div>
                             <div class="text-2" style="color: #190053">
-                              <span class="card-panel-num">$ {{ maxMkatTx }} </span>
+                              <span class="card-panel-num">100,000,000,000 BCAKE </span>
                             </div>
                           </div>
                         </div>
@@ -163,7 +163,7 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">BEAGLE CAKE price</div>
+                            <div class="text-1">100,000 BEAGLE CAKE price</div>
                             <div class="text-2" style="color: #190053">
                               <span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
@@ -251,8 +251,8 @@
         <b-button class="mt-3" block>
           <ShareNetwork
             network="twitter"
-            url="https://moonkat.net/"
-            :title="`I just claimed ${cakeAvailableReward} CAKE only by holding BBC token. You can try it too!`"
+            url="https://beaglecake-75c05.web.app/"
+            :title="`I just claimed ${cakeAvailableReward} CAKE only by holding BCAKE  token. You can try it too!`"
             @open="open"
           >
             Of course!
@@ -264,7 +264,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import { utils, ethers, BigNumber } from "ethers";
 
 import { CONTRACT_ADDRESS, CHAIN_ID } from "@/constants";
@@ -306,11 +306,17 @@ export default {
     cakeAvailableReward() {},
   },
   async mounted() {
-    if (!this.signerAddress) {
+    console.debug('signer address: ', this.signerAddress);
+    console.debug('wallet provder: ', this.walletProviderType);
+
+    if ((this.walletProviderType == null || this.walletProviderType == undefined)  || !this.signerAddress) {
       console.error("user`s wallet is not connected");
+      this.logout();
       this.$router.replace({ path: "connect-wallet" });
       return;
     }
+
+    console.log(window.ethereum);
 
     console.debug("CURRENT CHAIN_ID IS : ", CHAIN_ID);
 
@@ -321,7 +327,15 @@ export default {
 
       const web3Provider = this.service.getWeb3Provider();
 
+      await web3Provider.provider.enable();
+
       const currentProvider = { ...web3Provider };
+
+      if(currentProvider.provider.selectedAddress == null) { 
+        console.error("user`s wallet is not connected");
+        this.logout();
+        this.$router.replace({ path: "connect-wallet" });
+      }
 
       const networkResult = await currentProvider._networkPromise;
 
@@ -432,6 +446,7 @@ export default {
         this.$loading(false);
       }
     },
+     ...mapMutations(["logout"]),
   },
 };
 </script>

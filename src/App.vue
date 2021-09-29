@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <!-- <Header v-if="!$route.meta.hideNavigation" /> -->
-    <router-view></router-view>
-    <!--    <Preloader />-->
+    <div v-if="isLoaded">
+      <router-view></router-view>
+    </div>
+    <div v-else class="loading-container">
+      <span class="loading">Loading...</span>
+    </div>
   </div>
 </template>
 
@@ -11,16 +14,19 @@
 
 import { mapGetters, mapMutations } from "vuex";
 import MetamaskService from "@/MetamaskService";
-import { ethers } from "ethers";
+import { ethers, Wallet } from "ethers";
+import router from "./routes";
 
 export default {
   name: "App",
+  data() {
+    return {
+      isLoaded: false,
+    };
+  },
   computed: {
     ...mapGetters(["signerAddress"]),
     ...mapGetters(["walletProviderType"]),
-  },
-  components: {
-    //Header,
   },
   async mounted() {
     console.debug("wallet provider type: ", this.walletProviderType);
@@ -30,28 +36,45 @@ export default {
       this.logout();
     } else {
       const walletProvider = await MetamaskService.createWalletProviderFromType(this.walletProviderType);
+      console.log("walletProvider: ", walletProvider);
 
-      const web3Provider = new ethers.providers.Web3Provider(walletProvider);
+      try {
+        await walletProvider.enable();
+        const web3Provider = new ethers.providers.Web3Provider(walletProvider);
+        const signer = web3Provider.getSigner();
 
-      const signer = web3Provider.getSigner();
-
-      this.updateSignerAddress(await signer.getAddress());
+        this.updateSignerAddress(await signer.getAddress());
+      } catch (ex) {
+        console.error(ex);
+        this.logout();
+      }
     }
 
-    if (window.ethereum) {
-      console.debug("app.vue ethereum is available");
-      const that = this;
-      window.ethereum.on("accountsChanged", function([accounts]) {
-        console.log("accounts: ", { accs: accounts });
-        that.updateSignerAddress(accounts);
-        window.location.reload();
-      });
+    try {
+      if (window.ethereum) {
+        console.debug("app.vue ethereum is available");
+        const that = this;
+        window.ethereum.on("accountsChanged", function([accounts]) {
+          console.log("accounts: ", { accs: accounts });
+          that.updateSignerAddress(accounts);
+          window.location.reload();
+        });
 
-      window.ethereum.on("networkChanged", function(networkId) {
-        // Time to reload your interface with the new networkId
-        window.location.reload();
-      });
+        window.ethereum.on("networkChanged", function(networkId) {
+          // Time to reload your interface with the new networkId
+          window.location.reload();
+        });
+      }
+    } catch (ex) {
+      console.error(ex);
+    } finally {
+      if (this.signerAddress == null) {
+        console.debug("SELECTED ADDRESS IS NULL. REDIRECT");
+        router.push({ path: "/connect-wallet" });
+      }
     }
+
+    this.isLoaded = true;
   },
   methods: {
     ...mapMutations(["updateSignerAddress", "logout"]),
@@ -89,6 +112,20 @@ a:focus,
 a:hover {
   text-decoration: none;
   outline: 0;
+}
+
+.loading {
+  margin: 0 auto;
+  font-size: 22px;
+  font-family: "Rancho", cursive;
+}
+
+.loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
 }
 
 .team-pa {

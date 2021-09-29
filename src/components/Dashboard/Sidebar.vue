@@ -3,7 +3,7 @@
     <div class="logo-and-buy">
       <div class="text-center">
         <router-link :to="{ name: 'Home' }">
-          <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="moonKat" />
+          <img src="@/assets/images/beaglecakeLogo.png" class="logo" alt="BeagleCake" />
         </router-link>
       </div>
       <div class="mrat-text hide-on-mobile" style="color: #190053">beaglecake</div>
@@ -162,7 +162,7 @@ export default {
   },
   methods: {
     redirectTo(redirectUrl) {
-      window.location.href = redirectUrl;
+      window.open(redirectUrl, "_blank");
     },
     async updateUserBalances() {
       this.myMkatBalance = ethers.utils.formatUnits(await this.mkatContract.balanceOf(this.signerAddress), 18);
@@ -219,6 +219,7 @@ export default {
 }
 .sidebar-menu-item {
   width: 100%;
+  cursor: pointer;
 }
 .sidebar-menu-item:hover {
   background-color: #200069;
@@ -246,6 +247,7 @@ export default {
 }
 .sidebar-menu-item a span {
   font-weight: 500;
+  cursor: pointer;
 }
 .sidebar-menu-item:hover a span {
   transition: color 0.3 linear;

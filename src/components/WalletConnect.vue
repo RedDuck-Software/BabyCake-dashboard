@@ -75,7 +75,7 @@ export default {
 
     console.log("Signer address", this.signerAddress);
 
-    if (this.signerAddress) {
+    if (this.signerAddress && this.walletProviderType) {
       this.$router.replace({ path: "dashboard" });
     }
   },
