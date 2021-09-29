@@ -36,17 +36,13 @@
         <span id="copy-address" @click="copyAddress()">
           <span style="margin-right: 3px"> <i class="fa fa-clone"></i></span> Copy address
         </span>
-        <a
-          id="bscscan"
-          :href="`https://etherscan.io/address/${signerAddress}`"
-          target="_blank"
-          style="margin-left: 10px"
+        <a id="bscscan" :href="`https://bscscan.com/address/${signerAddress}`" target="_blank" style="margin-left: 10px"
           ><span style="margin-right: 3px"><i class="fa fa-clone"></i></span> View on Bscscan
         </a>
       </div>
       <div class="text-2">Your Beagle Cake balance:</div>
       <div class="text-3">
-        {{tokenSymbol}}
+        {{ tokenSymbol }}
         <span> {{ myMkatBalance }} </span><br />
         ({{ myMkatBalanceInBUSD }}$)
       </div>

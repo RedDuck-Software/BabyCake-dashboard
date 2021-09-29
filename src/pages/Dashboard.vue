@@ -52,7 +52,9 @@
                     <a href=""><img src="@/assets/images/Reddit_logo.png" alt=""/></a>
                     <a href=""><img src="@/assets/images/Facebook_logo.png" alt=""/></a>
                     <a href=""><img src="@/assets/images/Discord_logo.png" alt=""/></a>
-                    <a href=""><img src="@/assets/images/Twitter_logo.png" alt=""/></a>
+                    <a href="https://twitter.com/BeagleCakeBSC" target="_blank"
+                      ><img src="@/assets/images/Twitter_logo.png" alt=""
+                    /></a>
                     <a href=""><img src="@/assets/images/Instagram_logo.png" alt=""/></a>
                     <a href=""><img src="@/assets/images/Telegram_logo.png" alt=""/></a>
                   </div>
@@ -126,7 +128,7 @@
                           <div class="col-sm-8 p-2">
                             <div class="text-1">Total Supply</div>
                             <div class="text-2" style="color: #190053">
-                              <span class="card-panel-num">100,000,000,000 {{tokenSymbol}} </span>
+                              <span class="card-panel-num">100,000,000,000 {{ tokenSymbol }} </span>
                             </div>
                           </div>
                         </div>
@@ -163,7 +165,7 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">100,000 {{tokenSymbol}} price</div>
+                            <div class="text-1">100,000 {{ tokenSymbol }} price</div>
                             <div class="text-2" style="color: #190053">
                               <span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
@@ -252,7 +254,9 @@
           <ShareNetwork
             network="twitter"
             url="https://beaglecake-75c05.web.app/"
-            :title="`I just claimed ${cakeAvailableReward} CAKE only by holding ${tokenSymbol}  token. You can try it too!`"
+            :title="
+              `I just claimed ${cakeAvailableReward} CAKE only by holding ${tokenSymbol}  token. You can try it too!`
+            "
             @open="open"
           >
             Of course!
@@ -307,10 +311,10 @@ export default {
     cakeAvailableReward() {},
   },
   async mounted() {
-    console.debug('signer address: ', this.signerAddress);
-    console.debug('wallet provder: ', this.walletProviderType);
+    console.debug("signer address: ", this.signerAddress);
+    console.debug("wallet provder: ", this.walletProviderType);
 
-    if ((this.walletProviderType == null || this.walletProviderType == undefined)  || !this.signerAddress) {
+    if (this.walletProviderType == null || this.walletProviderType == undefined || !this.signerAddress) {
       console.error("user`s wallet is not connected");
       this.logout();
       this.$router.replace({ path: "connect-wallet" });
@@ -332,7 +336,7 @@ export default {
 
       const currentProvider = { ...web3Provider };
 
-      if(currentProvider.provider.selectedAddress == null) { 
+      if (currentProvider.provider.selectedAddress == null) {
         console.error("user`s wallet is not connected");
         this.logout();
         this.$router.replace({ path: "connect-wallet" });
@@ -449,7 +453,7 @@ export default {
         this.$loading(false);
       }
     },
-     ...mapMutations(["logout"]),
+    ...mapMutations(["logout"]),
   },
 };
 </script>
