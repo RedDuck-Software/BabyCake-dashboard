@@ -8,7 +8,7 @@
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-sm-0">
           <div class="text-1">Total Supply</div>
-          <div class="text-2">1,000,000,000 BBC</div>
+          <div class="text-2">100,000,000,000 BBC</div>
         </div>
         <div class="item-statistic col-sm-6 col-md-3 mt-3 mt-md-0">
           <div class="text-1">Total Burned</div>
@@ -53,7 +53,7 @@
     <div class="statistic-p1 mt-25">
       <div class="row">
         <div class="item-statistic col-sm-6 col-md-3">
-          <div class="text-1">Current 100,000 BBC</div>
+          <div class="text-1">100,000 BEAGLE CAKE price</div>
           <div class="text-2">
             <span class="card-panel-num">$ {{ hundredthousandmkatusd }} </span>
           </div>

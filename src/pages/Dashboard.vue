@@ -124,9 +124,9 @@
                             <img src="@/assets/images/beaglemoney.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">Max Transaction Amount</div>
+                            <div class="text-1">Total Supply</div>
                             <div class="text-2" style="color: #190053">
-                              <span class="card-panel-num">$ {{ maxMkatTx }} </span>
+                              <span class="card-panel-num">100,000,000,000 BBC</span>
                             </div>
                           </div>
                         </div>
@@ -163,7 +163,7 @@
                             <img src="@/assets/images/beaglecakeLogo.png" class="img-icon" />
                           </div>
                           <div class="col-sm-8 p-2">
-                            <div class="text-1">BEAGLE CAKE price</div>
+                            <div class="text-1">100,000 BEAGLE CAKE price</div>
                             <div class="text-2" style="color: #190053">
                               <span class="card-panel-num">$ {{ hundredThousandMKATUSD }} </span>
                             </div>
