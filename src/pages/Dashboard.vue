@@ -253,7 +253,7 @@
         <b-button class="mt-3" block>
           <ShareNetwork
             network="twitter"
-            url="https://beaglecake-75c05.web.app/"
+            url="dapp.beaglecake.io"
             :title="
               `I just claimed ${cakeAvailableReward} CAKE only by holding ${tokenSymbol}  token. You can try it too!`
             "
