@@ -54,7 +54,7 @@
           <span>Homepage</span>
         </a>
       </div>
-      <div class="sidebar-menu-item sidebar-menu-item-nonlast">
+      <!-- <div class="sidebar-menu-item sidebar-menu-item-nonlast">
         <a href="">
           <img src="@/assets/images/book.png" alt="" />
           <span>Guide</span>
@@ -65,7 +65,7 @@
           <img src="@/assets/images/vosklznak.png" alt="" />
           <span>Disclaimer</span>
         </a>
-      </div>
+      </div> -->
 
       <div
         class="sidebar-menu-item sidebar-menu-item-nonlast"
