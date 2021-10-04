@@ -72,4 +72,8 @@
     margin: 0px -15px;
     padding: 40px 14px;
   }
+
+  .container-fluid {
+    margin-bottom: 20px;
+  }
 }

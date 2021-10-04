@@ -1459,7 +1459,7 @@ textarea::placeholder {
 }
 /*claim bnb css*/
 .claim-reward .claim-reward-content {
-  margin: 166px 30px 0px;
+  margin: 226px 10px 0px;
   border-radius: 20px;
   background-color: #c4c6e7;
   padding: 10px;
@@ -1939,7 +1939,7 @@ textarea::placeholder {
 }
 
 .claim-reward .statistic-wrapper {
-  margin: 25px 30px 10px;
+  margin: 25px 10px 0px;
   font-family: "Rancho", cursive;
   display: -webkit-box;
   display: -ms-flexbox;

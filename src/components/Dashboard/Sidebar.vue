@@ -66,11 +66,7 @@
       </div>
       <div
         class="sidebar-menu-item"
-        @click="
-          redirectTo(
-            `https://wonderful-coast-093812910.azurestaticapps.net/token0Id=${CONTRACT_ADDRESS}?token1Id=0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c`
-          )
-        "
+        @click="redirectTo(`https://www.dextools.io/app/bsc/pair-explorer/0x0d8011438c8feb5938d74969ec7b7dddeda12054`)"
       >
         <a>
           <img src="@/assets/images/chartsup.png" alt="" />

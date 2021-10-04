@@ -47,16 +47,12 @@
                 </div>
                 <div class="col-sm-6 social-links-container">
                   <div class="social-links">
-                    <a href=""><img src="@/assets/images/Youtube_logo.png" alt=""/></a>
-                    <a href=""><img src="@/assets/images/Tiktok_logo.png" alt=""/></a>
-                    <a href=""><img src="@/assets/images/Reddit_logo.png" alt=""/></a>
-                    <a href=""><img src="@/assets/images/Facebook_logo.png" alt=""/></a>
-                    <a href=""><img src="@/assets/images/Discord_logo.png" alt=""/></a>
                     <a href="https://twitter.com/BeagleCakeBSC" target="_blank"
                       ><img src="@/assets/images/Twitter_logo.png" alt=""
                     /></a>
-                    <a href=""><img src="@/assets/images/Instagram_logo.png" alt=""/></a>
-                    <a href=""><img src="@/assets/images/Telegram_logo.png" alt=""/></a>
+                    <a href="https://t.me/BeagleCakeBSC" target="_blank"
+                      ><img src="@/assets/images/Telegram_logo.png" alt=""
+                    /></a>
                   </div>
                 </div>
               </div>
@@ -105,6 +101,7 @@
                                   <i class="fa fa-gift"></i>
                                   <div class="buyCard">
                                     <div class="buyCardBody">
+                                      <i class="giftIcon"></i>
                                       <span>Claim my CAKE</span>
                                     </div>
                                   </div>
@@ -484,11 +481,29 @@ export default {
 }
 
 .buyCardBody span {
-  font-size: 20px;
+  font-size: 22px;
+  position: relative;
+  top: 2px;
 }
 
 .buyCard {
   display: inline-block;
+}
+
+.giftIcon {
+  background: url("../assets/images/gift.png");
+  position: relative;
+  left: -5px;
+  top: 1px;
+  opacity: 0.6;
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+
+.button-custom-new:hover .giftIcon {
+  opacity: 1;
+  transition: opacity 0.3s linear;
 }
 
 .share-network-twitter {
