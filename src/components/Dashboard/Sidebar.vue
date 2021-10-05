@@ -10,7 +10,7 @@
       <div class="mrat-desc">A new way to earn CAKE</div>
       <div class="button-buy-mrat hide-on-mobile">
         <a
-          href="https://exchange.pancakeswap.finance/#/swap?outputCurrency=0x38bd8cd90374dbc903aed9d2ee28f5ab856342ce"
+          href="https://pancakeswap.finance/swap?outputCurrency=0x0d8011438c8feb5938d74969ec7b7dddeda12054  "
           target="_blank"
           class="button-custom-new button-sidebar"
           ><i class="fa fa-shopping-cart"></i>

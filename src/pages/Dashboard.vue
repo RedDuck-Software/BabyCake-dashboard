@@ -53,12 +53,16 @@
                     <a href="https://t.me/BeagleCakeBSC" target="_blank"
                       ><img src="@/assets/images/Telegram_logo.png" alt=""
                     /></a>
+                    <a href="https://github.com/BeagleCakeBSC" target="_blank"
+                      ><img src="@/assets/images/GitHub_logo.png" alt=""
+                    /></a>
                   </div>
                 </div>
               </div>
               <div class="mt-3">
                 <div id="myTabContent" class="tab-content info-container">
                   <div id="one" class="tab-pane fade p-3 claim-reward" :class="{ 'active show': isActive('one') }">
+                    <img src="@/assets/images/how-to-buy-gif.gif" alt="image-gif" class="howToBuy" />
                     <div class="claim-reward-content">
                       <div v-if="!isRewardClaimAvailable" class="disabled-overlay w-100 h-100"></div>
                       <div class="row">
@@ -83,7 +87,7 @@
                             Next claim date: <span class="bold">{{ nextClaimDate }} </span>
                           </div>
                           <div class="title-noted">
-                            *pool is always changing based on buys, sells, and collects by others, learn more here
+                            *pool is always changing based on buys, sells, and collects by others
                             <span
                               ><a href="#" target="_blank"><i class="fa fa-question-circle"></i></a
                             ></span>
@@ -580,5 +584,11 @@ export default {
 }
 .el-input__inner:-ms-input-placeholder {
   color: #190053 !important;
+}
+
+.howToBuy {
+  width: 180px;
+  display: block;
+  margin: 0 auto;
 }
 </style>

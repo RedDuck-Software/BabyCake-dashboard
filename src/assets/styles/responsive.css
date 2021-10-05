@@ -33,7 +33,7 @@
 
 @media only screen and (max-width: 1020px) {
   .claim-reward .claim-reward-content {
-    margin: 166px 0px 0px;
+    margin: 20px 0px 0px;
   }
 
   .claim-reward .statistic-wrapper {
@@ -52,7 +52,11 @@
   }
 
   .claim-reward .claim-reward-content {
-    margin: 106px 0px 0px;
+    margin: 20px 0px 0px;
+  }
+
+  .howToBuy {
+    display: none;
   }
 
   .claim-reward .statistic-wrapper .item-statistic {
