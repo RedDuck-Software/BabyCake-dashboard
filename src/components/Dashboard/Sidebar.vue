@@ -10,7 +10,7 @@
       <div class="mrat-desc">A new way to earn CAKE</div>
       <div class="button-buy-mrat hide-on-mobile">
         <a
-          href="https://pancakeswap.finance/swap?outputCurrency=0x0d8011438c8feb5938d74969ec7b7dddeda12054  "
+          href="https://pancakeswap.finance/swap?outputCurrency=0xe7244e92956428a058c37557551ecfdfd54890ac"
           target="_blank"
           class="button-custom-new button-sidebar"
           ><i class="fa fa-shopping-cart"></i>
@@ -66,7 +66,7 @@
       </div>
       <div
         class="sidebar-menu-item"
-        @click="redirectTo(`https://www.dextools.io/app/bsc/pair-explorer/0x0d8011438c8feb5938d74969ec7b7dddeda12054`)"
+        @click="redirectTo(`https://www.dextools.io/app/bsc/pair-explorer/0xe7244e92956428a058c37557551ecfdfd54890ac`)"
       >
         <a>
           <img src="@/assets/images/chartsup.png" alt="" />
