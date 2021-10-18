@@ -424,7 +424,7 @@ export default {
         2
       );
 
-      const totalBnbInLiquidityPool = (await this.service.getPancakePairPoolReserves())[1];
+      const totalBnbInLiquidityPool = (await this.service.getPancakePairPoolReserves())[0];
       this.totalBnbInPool = parseFloat(utils.formatEther(totalBnbInLiquidityPool)).toFixed(2);
     },
     isActive(menuItem) {

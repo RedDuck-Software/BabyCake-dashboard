@@ -167,8 +167,8 @@ export default class MetamaskService {
   public async totalLiquidityPoolInBUSD() {
     const poolReserves = await this.getPancakePairPoolReserves();
 
-    const mkat = poolReserves[0];
-    const bnb = poolReserves[1];
+    const mkat = poolReserves[1];
+    const bnb = poolReserves[0];
 
     const bnbUSD = (await this.getPricesPath(bnb, [WBNB_ADDRESS, BUSD_ADDRESS]))[1];
     const mkatUSD = await this.getMkatValueInBUSD(mkat);
